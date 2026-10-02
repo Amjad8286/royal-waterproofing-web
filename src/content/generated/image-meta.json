@@ -1,0 +1,328 @@
+{
+  "/images/brand/royal-waterproofing-logo-reversed.svg": {
+    "width": 1419,
+    "height": 679
+  },
+  "/images/brand/royal-waterproofing-logo.svg": {
+    "width": 1419,
+    "height": 679
+  },
+  "/images/clients/adani.svg": {
+    "width": 279,
+    "height": 100
+  },
+  "/images/clients/godrej-boyce.svg": {
+    "width": 501,
+    "height": 100
+  },
+  "/images/clients/tata.svg": {
+    "width": 114,
+    "height": 100
+  },
+  "/images/illustrations/basement-villa-after.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAADwAQCdASoMAAkAA4BaJZQC7AEPBQ3LQQAA/t/q+cW/B/i6s26pgAAA",
+    "highlights": 0.675
+  },
+  "/images/illustrations/basement-villa-before.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAADQAQCdASoMAAkAA4BaJZQC7AEUpDWCAAD+jhMtPVbq95kUfEAAAA==",
+    "highlights": 0.478
+  },
+  "/images/illustrations/bathroom-apartment-after.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAABwAQCdASoMAAkAA4BaJZwC7AF1AAD+8PWmOwD44L9pxAAA",
+    "highlights": 0.874
+  },
+  "/images/illustrations/bathroom-apartment-before.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAACwAQCdASoMAAkAA4BaJZwC7AEOjhSoAP7zdH4g0Xi06J0H5+H/CgAA",
+    "highlights": 0.874
+  },
+  "/images/illustrations/ceiling-leak-after.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAADwAQCdASoMAAkAA4BaJYwCdAEOUqVRCgAA/vYHyFbeIUPV+QXKwAwA",
+    "highlights": 0.871
+  },
+  "/images/illustrations/ceiling-leak-before.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAABwAQCdASoMAAkAA4BaJYwCdAFAAAD+8K1LLc5f7nt+47uhnm09ajCmLdIEMFDFAAA=",
+    "highlights": 0.871
+  },
+  "/images/illustrations/facade-cracks-after.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAABQAgCdASoMAAkAA4BaJZQAGyA4AEMr+bduLgAA/usxvuoJb+nyNKDK3yPGfjKgj1n4zgcir82hDBc5MPKa8VhW/LAAAA==",
+    "highlights": 0.771
+  },
+  "/images/illustrations/facade-cracks-before.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoMAAkAA4BaJYwC7AENiVHugAD+5/7kDcXqzk6J5mmbirLBFcGeIftNlXknUP/4Xb9wo5yZbTQIUx51AAA=",
+    "highlights": 0.71
+  },
+  "/images/illustrations/fire-water-tank-after.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAABwAQCdASoMAAkAA4BaJZQCdAFAAAD+7pY/Ce9hcwZQTFCSwaysC8AA",
+    "highlights": 0.653
+  },
+  "/images/illustrations/fire-water-tank-before.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAABwAQCdASoMAAkAA4BaJZQC7AFAAAD+5azB8ABzcRD52oAA",
+    "highlights": 0.432
+  },
+  "/images/illustrations/kitchen-floor-after.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAAAQAgCdASoMAAkAA4BaJaACdH8AGZLkhAMAAP7zwiObD3wD7os1oSTs3/61nAd6JKJm2Wr7SDaYcwAA",
+    "highlights": 0.911
+  },
+  "/images/illustrations/kitchen-floor-before.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADwAQCdASoMAAkAA4BaJaACdAEfbHv7sAAA/vPCI5sPfARUS4u4q00alg1jRKnoZwR8K5CeEZuBJMlEAAA=",
+    "highlights": 0.911
+  },
+  "/images/illustrations/new-build-basement-after.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADwAQCdASoMAAkAA4BaJYwCdIExGBW+AzAA/vIvX2090QRv+q4zo4mZu8Nq9ZBuQRtt6HdkgmbJgAAA",
+    "highlights": 0.808
+  },
+  "/images/illustrations/new-build-basement-before.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAACwAQCdASoMAAkAA4BaJQBOgCHG81TAAP7yL19tPdEEbc+SyK+dpf8zelycPQDz071oNHAAAAA=",
+    "highlights": 0.808
+  },
+  "/images/illustrations/office-roof-after.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAADwAQCdASoMAAkAA4BaJZwC7AD2On+39AAA/u3hUan8wV9N+JB7+e+PAAA=",
+    "highlights": 0.902
+  },
+  "/images/illustrations/office-roof-before.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADwAQCdASoMAAkAA4BaJZQCdAD2N5zMugAA/u3hUan8wV9L/I4tvgwTvjhphy/8YAA=",
+    "highlights": 0.741
+  },
+  "/images/illustrations/podium-deck-after.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAADQAQCdASoMAAkAA4BaJZQCdAELS2ryAAD+56RDSrV0pP6Ox3Il+XsD2elgAA==",
+    "highlights": 0.714
+  },
+  "/images/illustrations/podium-deck-before.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAACwAQCdASoMAAkAA4BaJZwC7AEOO27gAP7npENKtVtb9Sq26pCmWKzWAAA=",
+    "highlights": 0.712
+  },
+  "/images/illustrations/rising-damp-after.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4WAoAAAAQAAAACwAACAAAQUxQSB0AAAABHyCQTfxxWwDXiIjgQJhtVMm9zt/lECL6n74VAABWUDggMgAAAPABAJ0BKgwACQADgFolmAJ0ARXOY5CUAAD+8jR7KnpDk5zczIT2VJ6kVhzvaRJ6wQAA",
+    "highlights": 0.826
+  },
+  "/images/illustrations/rising-damp-before.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4WAoAAAAQAAAACwAACAAAQUxQSB8AAAABH6CmbQOGP9t0/KEREaEHhNlGldzr/F0OIaL/6VsBAFZQOCA0AAAA8AEAnQEqDAAJAAOAWiWYAnQBFc6sHbAAAP7x+wA1Wnrm03P7cweciOAwuZA8th3HF8oAAA==",
+    "highlights": 0.826
+  },
+  "/images/illustrations/terrace-home-after.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAADQAQCdASoMAAkAA4BaJZwC7AEU73qqIAD+7+8czhBMwCZ+vxIIbhwAAAA=",
+    "highlights": 0.844
+  },
+  "/images/illustrations/terrace-home-before.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAADQAQCdASoMAAkAA4BaJZQCdAEU9OrAAAD+7+8czhBMwCZ0xN+PWuyTxOoeeeTb/xgAAA==",
+    "highlights": 0.744
+  },
+  "/images/illustrations/warehouse-roof-after.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4WAoAAAAQAAAACwAACAAAQUxQSB8AAAABD9D/iAioimyD8vx1A0ginBHllhUiov8pr/MwtSAIAFZQOCAkAAAAcAEAnQEqDAAJAAOAWiWcAnQBQAAA/vF9hEmoNh7YTopMAAAA",
+    "highlights": 0.902
+  },
+  "/images/illustrations/warehouse-roof-before.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4WAoAAAAQAAAACwAACAAAQUxQSCEAAAABD9D/iAgoiiQnyp1wvymUIA4tMYuIiP4nfEff2nFLtlwAVlA4ICoAAACwAQCdASoMAAkAA4BaJZwCdAEU5UAQAP7traZnzBwwNx/MScw6eotwAAA=",
+    "highlights": 0.785
+  },
+  "/images/photos/basement-concrete-wall.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRjAAAABXRUJQVlA4ICQAAABwAQCdASoMAAkAA4BaJZQAApmDMADNvahwNSX9qCCWyvSzAAA=",
+    "highlights": 0.307
+  },
+  "/images/photos/basement-parking-puddles-portrait.webp": {
+    "width": 1280,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABwAQCdASoMAA8AA4BaJZQAAlA44AD+6kTDwhJADWyO0qweYTqhsTZWdBSw3uWfgDprTrnwEoSFhoXiXDHgZgwYbsqOsasvEc44CC0FYAA=",
+    "highlights": 0.255
+  },
+  "/images/photos/basement-parking-puddles-wide.webp": {
+    "width": 2400,
+    "height": 1350,
+    "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAQCdASoMAAcAA4BaJaQAAlr5UGgPAAD+h6kFJna/uaizcP90ZNlfhQEedNbgvjmky3hzyNH7Sq+puMHHMcAA",
+    "highlights": 0.294
+  },
+  "/images/photos/basement-parking-puddles.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoMAAkAA4BaJZwAAxeeMgu4SAD+3PyyR0KM23oHfCcQOUBwNPJvGTLaeFgy4+E+cNLfIrHj8bTzxRLScwwKAAAA",
+    "highlights": 0.265
+  },
+  "/images/photos/bathroom-floor-drain.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADQAQCdASoMAAkAA4BaJaQAAudighlwAAD+7WPBvnkaIMJ3ovRqlnzPWS6tKYm8pCq+43yrc2oOAAAA",
+    "highlights": 0.707
+  },
+  "/images/photos/bathroom-tiled-corner.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADQAQCdASoMAAkAA4BaJYwCdH8AFaytwAD+tvvRpO9Mof25p/SNO95YcMbeM7Hsn1uMpmBjjcqgsGDdAAA=",
+    "highlights": 0.656
+  },
+  "/images/photos/coating-roller-pails-portrait.webp": {
+    "width": 1280,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACwAQCdASoMAA8AA4BaJQBOgBIQqQ0AANXLZpX1EUhqh4HAE3Dq9zD1TyMq26E2e0RqXCOhU5JTkGtGxDxIVJXwF4AAAA==",
+    "highlights": 0.428
+  },
+  "/images/photos/coating-roller-pails-wide.webp": {
+    "width": 2400,
+    "height": 1350,
+    "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACwAQCdASoMAAcAA4BaJbACdACQ8hIgAMnzxTjzoRBrO5znYNqGOjpmd/nEICaBJDO56HgEYDNW+1oY2BaSV7XtWgAAAA==",
+    "highlights": 0.358
+  },
+  "/images/photos/coating-roller-pails.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACwAQCdASoMAAkAA4BaJZgCdACgLzIAANbPDoWJkGDDBjZI8gChCjAAGdFxabOmYkF0FhKnEB2hh+CFfRT/gAAA",
+    "highlights": 0.433
+  },
+  "/images/photos/concrete-frame-construction.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAwAgCdASoMAAkAA4BaJZQCdAEfbo0P3p7HAAD+8I4fsL/TPEQRaJjgKwub8fy0kjUCUYZQHBEWE9Z+PFhCKE+0b2ul+5i5QAA=",
+    "highlights": 0.805
+  },
+  "/images/photos/crack-seepage-stains-portrait.webp": {
+    "width": 1280,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAAAQAgCdASoMAA8AA4BaJYwC7AEO+DEAmpeAAP7TibMmmas7QKwUCjM4jP1NBuZ1m271/kWNEEAAAA==",
+    "highlights": 0.628
+  },
+  "/images/photos/crack-seepage-stains-wide.webp": {
+    "width": 2400,
+    "height": 1350,
+    "blurDataURL": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAQCdASoMAAcAA4BaJZQC7ADc5pSQAP7fJOcp7tHLccQwGYw9WqJMHBvXAAAA",
+    "highlights": 0.606
+  },
+  "/images/photos/crack-seepage-stains.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAADQAQCdASoMAAkAA4BaJZQC7ADheWG1AAD+38Mf0bpd9oK4cvd214ms/e7PqBAA",
+    "highlights": 0.626
+  },
+  "/images/photos/damp-peeling-wall.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACwAQCdASoMAAkAA4BaJZwAAjO/Q1EAAP6RXnzCKsCfX3czAic1WKnbW+ch6oGy4ZWruFvGQGXjnKvz6oSum4igAAA=",
+    "highlights": 0.61
+  },
+  "/images/photos/industrial-roof-aerial.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoMAAkAA4BaJQBOgCFN2aLpMLAA4n+6M6goG+cydBz8YvyJJHeX/yHLHhepusBiJQXrZWCVegphox5W8lpAAA==",
+    "highlights": 0.639
+  },
+  "/images/photos/leaking-pipe-joint.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoMAAkAA4BaJZQCdADcoBqFhgAA/Xjjyfx3/WfYCwuWXvdCeh6cnqNoyn+gCWjg8L/RBhcp9G1fOMdxL3GkAA==",
+    "highlights": 0.294
+  },
+  "/images/photos/mumbai-housing-society.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQAgCdASoMAAkAA4BaJYwC7AYq/ZotbKTAAPysNci6H+gthPiIl8bTM6Kte8DyCjLgBMB5v7RcHDHqVID4bJnhmhjiG0NWO7jufbUSy6AAAA==",
+    "highlights": 0.642
+  },
+  "/images/photos/mumbai-monsoon-skyline-portrait.webp": {
+    "width": 1280,
+    "height": 1599,
+    "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoMAA8AA4BaJYwCdADZewriAAD+xx5Qr6nVlXNdHgI8KdEVEZX/Voyh3By9xKzn2sK7C6D3zTgAAA==",
+    "highlights": 0.429
+  },
+  "/images/photos/mumbai-monsoon-skyline.webp": {
+    "width": 2400,
+    "height": 1350,
+    "blurDataURL": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAADQAQCdASoMAAcAA4BaJZwCdADz5zglAAD8dwl3c9nVhT0wmXvsAifagmT0ByLTX0AAAA==",
+    "highlights": 0.342
+  },
+  "/images/photos/mumbai-office-towers.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAQAgCdASoMAAkAA4BaJbACdAD8ZMKiI5jgAP2UoVlf/puvjtMEzL7+7jQN0xZNvJmtOEHYVYHU6KaMdkiFiGJYP/XXjO5IAAA=",
+    "highlights": 0.485
+  },
+  "/images/photos/mumbai-society-building.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACwAQCdASoMAAkAA4BaJQBOgCHMYvFAAMpB0zBbHVFU+3P+XfVudqr40xFI42Y4gesnIeNCSMHDS2qZnXEaiYFBg/QL+cAA",
+    "highlights": 0.453
+  },
+  "/images/photos/mumbai-towers-crane.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAACwAQCdASoMAAkAA4BaJQBOgBsy4pSAAP7q6eun2A+Ddqc4I65SMNbPLhkrSAR1+uPUkHd+rbcJSpfMTkcAAA==",
+    "highlights": 0.596
+  },
+  "/images/photos/plans-tape-helmet.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoMAAkAA4BaJQBWABuVp07CAAD13HzeUKzwX/Cvub6/huQpXUGASdAJfdFL1LUq+92CN0UDYx4vc2RAAAA=",
+    "highlights": 0.618
+  },
+  "/images/photos/site-plans-level-helmet.webp": {
+    "width": 1600,
+    "height": 1200,
+    "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAABwAQCdASoMAAkAA4BaJaQAAk4x8AD+WydwE9P0DMzWOV2HfFEuznnRJAA3CHu07g9r7ZGk87jLRazUP9DLyAAA",
+    "highlights": 0.776
+  },
+  "/images/photos/terrace-water-tanks-portrait.webp": {
+    "width": 1280,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACwAQCdASoMAA8AA4BaJZwAAejxUq+EAPzUx6Eu00GgLOHxD/+3FaUAn1IFvR9uB9TBRmxfXSvusAAA",
+    "highlights": 0.44
+  },
+  "/images/photos/terrace-water-tanks-wide.webp": {
+    "width": 2400,
+    "height": 1350,
+    "blurDataURL": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAACQAQCdASoMAAcAA4BaJZwAAqv1KAAAx0ZtK8ggqS+FKHok6Bid9CgA",
+    "highlights": 0.426
+  },
+  "/images/photos/terrace-water-tanks.webp": {
+    "width": 1800,
+    "height": 1350,
+    "blurDataURL": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAACwAQCdASoMAAkAA4BaJZwAAvwMvHOkANn+HdLqy8eve8s02f92svAA",
+    "highlights": 0.432
+  }
+}

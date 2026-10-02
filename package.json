@@ -1,0 +1,54 @@
+{
+  "name": "royal-waterproofing-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:preview": "NEXT_PUBLIC_PREVIEW_SAMPLES=true next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run",
+    "pretest:e2e": "node scripts/build-e2e.mjs",
+    "test:e2e": "playwright test",
+    "check:content": "tsx scripts/content-report.ts",
+    "docs:content": "tsx scripts/content-report.ts --write",
+    "images:stock": "node scripts/stock-photos.mjs",
+    "images:clients": "node scripts/client-logos.mjs && node scripts/image-meta.mjs",
+    "images:meta": "node scripts/image-meta.mjs",
+    "images:illustrations": "node scripts/generate-illustrations.mjs && node scripts/image-meta.mjs",
+    "brand:icons": "node scripts/brand-icons.mjs",
+    "screenshots": "node scripts/screenshots.mjs"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.49.0",
+    "next": "16.3.8",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-hook-form": "^7.89.0",
+    "server-only": "^0.0.1",
+    "tailwind-merge": "^3.7.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^24.19.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.8",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.15",
+    "typescript": "^5",
+    "vitest": "^5.0.3"
+  },
+  "engines": {
+    "node": ">=20.9"
+  }
+}
