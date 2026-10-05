@@ -28,7 +28,7 @@ export function WhatsAppButton({ lookups, besideChat = false }: { lookups: NavLo
       inert={!pastHero}
       className={cn(
         "fixed z-30 hidden items-center gap-2.5 rounded-full bg-whatsapp flex size-14 items-center justify-center font-semibold text-navy-950 shadow-float lg:flex",
-        besideChat ? "right-24 bottom-7" : "right-6 bottom-6",
+        besideChat ? "right-24 bottom-6" : "right-6 bottom-6",
         "transition-[background-color,transform,opacity] duration-300 hover:bg-whatsapp-dark",
         pastHero ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0",
       )}
