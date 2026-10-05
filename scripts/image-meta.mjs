@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Reads every image in public/images and writes its dimensions (and, for
- * photos, a tiny blur placeholder and how bright their light areas are) to
+ * photos, a tiny blur placeholder and how bright their light areas are; for
+ * client logos, how light their artwork is) to
  * src/content/generated/image-meta.json.
  *
  * Run after adding or replacing images:  npm run images:meta
@@ -43,6 +44,25 @@ async function highlights(file) {
   return Math.round(values[Math.floor(values.length * 0.9)] * 1000) / 1000;
 }
 
+/**
+ * Client logos: mean lightness (0–1, Rec. 709 luma) of the artwork — visible
+ * pixels that aren't white. The client wall darkens pale logos (gold, yellow)
+ * so they don't fade to near-white in greyscale.
+ */
+async function ink(file) {
+  const { data } = await sharp(file, { density: 200 }).resize({ height: 200 }).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  let weight = 0;
+  let sum = 0;
+  for (let i = 0; i < data.length; i += 4) {
+    const alpha = data[i + 3] / 255;
+    const luma = (0.2126 * data[i] + 0.7152 * data[i + 1] + 0.0722 * data[i + 2]) / 255;
+    if (alpha < 0.5 || luma > 0.92) continue;
+    weight += alpha;
+    sum += alpha * luma;
+  }
+  return weight ? Math.round((sum / weight) * 100) / 100 : undefined;
+}
+
 const meta = {};
 for (const file of files) {
   const src = `/${relative(join(root, "public"), file).split(sep).join("/")}`;
@@ -54,6 +74,7 @@ for (const file of files) {
     entry.blurDataURL = `data:image/webp;base64,${blur.toString("base64")}`;
     entry.highlights = await highlights(file);
   }
+  if (src.startsWith("/images/clients/")) entry.ink = await ink(file);
   meta[src] = entry;
 }
 

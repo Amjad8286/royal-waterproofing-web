@@ -19,21 +19,34 @@ function logoWidth(width: number, height: number) {
   return Math.round(rem * 100) / 100;
 }
 
+/** The widest a logo gets: a wide-screen tile (one sixth of the container) less its padding. */
+const MAX_LOGO_REM = 10.75;
+
+/**
+ * Greyscale turns pale logos (gold, yellow) almost white beside dark ones, so
+ * at rest they're darkened until their artwork is no lighter than this (mean
+ * luma, `ink` from `npm run images:meta`). Hover shows the true colours.
+ */
+const MAX_INK = 0.4;
+
 /** A client's logo, in greyscale until hovered (so mixed brand colours sit calmly beside the names), or its name set as a wordmark. */
 function ClientMark({ client }: { client: Client }) {
   if (client.logo) {
     const logo = getImage(client.logo);
+    const width = logoWidth(logo.width, logo.height);
+    const dim = logo.ink && logo.ink > MAX_INK ? Math.round((MAX_INK / logo.ink) * 100) / 100 : 1;
     return (
       <div
         className="w-[calc(var(--logo-w)*0.85)] max-w-full sm:w-(--logo-w)"
-        style={{ "--logo-w": `${logoWidth(logo.width, logo.height)}rem` } as CSSProperties}
+        style={{ "--logo-w": `${width}rem`, "--logo-dim": dim } as CSSProperties}
       >
         <SiteImage
-          image={logo}
+          // No blurred placeholder: a smudge of a logo reads as a broken image.
+          image={{ ...logo, blurDataURL: undefined }}
           alt={client.name}
-          sizes="8rem"
+          sizes={`${Math.min(width, MAX_LOGO_REM)}rem`}
           draggable={false}
-          imgClassName="grayscale transition-[filter] duration-300 group-hover:grayscale-0"
+          imgClassName="grayscale brightness-(--logo-dim) transition-[filter] duration-300 group-hover:grayscale-0 group-hover:brightness-100"
         />
       </div>
     );

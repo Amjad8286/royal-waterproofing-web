@@ -15,9 +15,9 @@ import imageMeta from "./generated/image-meta.json";
  * then run `npm run images:meta`.
  */
 
-type Entry = Omit<ImageAsset, "id" | "width" | "height" | "blurDataURL" | "highlights">;
+type Entry = Omit<ImageAsset, "id" | "width" | "height" | "blurDataURL" | "highlights" | "ink">;
 
-const meta = imageMeta as Record<string, { width: number; height: number; blurDataURL?: string; highlights?: number }>;
+const meta = imageMeta as Record<string, { width: number; height: number; blurDataURL?: string; highlights?: number; ink?: number }>;
 
 const pexels = (id: number) => ({ source: "Pexels" as const, url: `https://www.pexels.com/photo/${id}/` });
 
@@ -37,8 +37,9 @@ const entries: Record<string, Entry> = {
     brief: "The company logo for navy backgrounds (white script and wordmark) — not a photo.",
   },
 
-  // Client logos for the home page's client wall: official marks from Wikimedia Commons,
-  // where each file's source is the company's own website (`npm run images:clients`).
+  // Client logos for the home page's client wall: official marks, either from Wikimedia
+  // Commons where the file's source is the company's own website, or as published on
+  // the company's own website (`npm run images:clients`). `source` is where each came from.
   // They're trademarks — show them only for confirmed clients, with permission.
   "client-adani": {
     src: "/images/clients/adani.svg",
@@ -60,6 +61,248 @@ const entries: Record<string, Entry> = {
     placeholder: false,
     source: "https://commons.wikimedia.org/wiki/File:GnB-logo.svg",
     brief: "Client logo (Godrej & Boyce) — not a photo.",
+  },
+  "client-mahindra": {
+    src: "/images/clients/mahindra.svg",
+    alt: "Mahindra",
+    placeholder: false,
+    source: "https://commons.wikimedia.org/wiki/File:Mahindra_Rise_New_Logo.svg",
+    brief: "Client logo (Mahindra) — not a photo.",
+  },
+  "client-navneet": {
+    src: "/images/clients/navneet.png",
+    alt: "Navneet",
+    placeholder: false,
+    source: "https://navneet.com/wp-content/uploads/2018/03/Navneet-Logo-Name_2-1.png",
+    brief: "Client logo (Navneet Education) — not a photo.",
+  },
+  "client-spjimr": {
+    src: "/images/clients/spjimr.png",
+    alt: "SPJIMR",
+    placeholder: false,
+    source: "https://www.spjimr.org/wp-content/uploads/2022/07/footer-logo.png",
+    brief: "Client logo (SPJIMR) — not a photo.",
+  },
+  "client-capacite": {
+    src: "/images/clients/capacite.svg",
+    alt: "Capacit'e Infraprojects",
+    placeholder: false,
+    source: "https://capacite.in/wp-content/uploads/2024/06/logo.svg",
+    brief: "Client logo (Capacit'e Infraprojects) — not a photo.",
+  },
+  "client-parsvnath": {
+    src: "/images/clients/parsvnath.png",
+    alt: "Parsvnath Developers",
+    placeholder: false,
+    source: "https://www.parsvnath.com/wp-content/themes/storefront/assets/icon/logo-parsvnaths.png",
+    brief: "Client logo (Parsvnath Developers) — not a photo.",
+  },
+  "client-hinduja-hospital": {
+    src: "/images/clients/hinduja-hospital.svg",
+    alt: "P. D. Hinduja Hospital",
+    placeholder: false,
+    source: "https://www.hindujahospital.com/static/Logo-3570dad3506eee206a594d7e761b3a4a.svg",
+    brief: "Client logo (P. D. Hinduja Hospital) — not a photo.",
+  },
+  "client-mj-shah": {
+    src: "/images/clients/mj-shah.svg",
+    alt: "MJ Shah Group",
+    placeholder: false,
+    source: "https://mjshahgroup.com/images/MJ-Shah-logo-white.svg (white original, coloured as https://mjshahgroup.com/images/MJ-Shah.png)",
+    brief: "Client logo (MJ Shah Group) — not a photo.",
+  },
+  "client-rustomjee": {
+    src: "/images/clients/rustomjee.svg",
+    alt: "Rustomjee",
+    placeholder: false,
+    source: "https://www.rustomjee.com/_next/static/media/header-logo.0789e56b.svg",
+    brief: "Client logo (Rustomjee) — not a photo.",
+  },
+  "client-dosti": {
+    src: "/images/clients/dosti.png",
+    alt: "Dosti",
+    placeholder: false,
+    source: "https://assets.dostirealty.com/uploads/dosti_full_logo_1a122c7082.png",
+    brief: "Client logo (Dosti Realty) — not a photo.",
+  },
+  "client-piramal": {
+    src: "/images/clients/piramal.png",
+    alt: "Piramal",
+    placeholder: false,
+    source: "https://www.piramal.com/assets/images/piramal-logo.png",
+    brief: "Client logo (Piramal Group) — not a photo.",
+  },
+  "client-kolte-patil": {
+    src: "/images/clients/kolte-patil.png",
+    alt: "Kolte-Patil",
+    placeholder: false,
+    source: "https://www.koltepatil.com/assets/dist/images/logo.jpg",
+    brief: "Client logo (Kolte-Patil Developers) — not a photo.",
+  },
+  "client-chandigarh-university": {
+    src: "/images/clients/chandigarh-university.png",
+    alt: "Chandigarh University",
+    placeholder: false,
+    source: "https://www.cuchd.in/includes/assets/images/header-footer/cu-logo-dark-new.webp",
+    brief: "Client logo (Chandigarh University) — not a photo.",
+  },
+  "client-chandak": {
+    src: "/images/clients/chandak.svg",
+    alt: "Chandak Group",
+    placeholder: false,
+    source: "https://www.chandakgroup.com/assets/images/Chandak-Group-Final-Logo.svg",
+    brief: "Client logo (Chandak Group) — not a photo.",
+  },
+
+  // Supplied by the owner (October 2026, client-logo/): trimmed to the artwork, at most
+  // 320 px tall; the small ones were upscaled and anything changed is noted in `source`.
+  "client-abrol": {
+    src: "/images/clients/abrol.png",
+    alt: "Abrol Ventures",
+    placeholder: false,
+    source: "Supplied by the owner",
+    brief: "Client logo (Abrol Ventures) — not a photo.",
+  },
+  "client-alpine-vistara": {
+    src: "/images/clients/alpine-vistara.png",
+    alt: "Alpinepeak Developers",
+    placeholder: false,
+    source: "Supplied by the owner",
+    brief: "Client logo (Alpinepeak Developers) — not a photo.",
+  },
+  "client-arcons": {
+    src: "/images/clients/arcons.png",
+    alt: "ARCONS Infrastructures & Constructions",
+    placeholder: false,
+    source: "Supplied by the owner; upscaled ×4 (Real-ESRGAN) for sharpness, colours kept; the small company-name line enlarged plainly so its letters stay true; white background removed",
+    brief: "Client logo (ARCONS Infrastructures & Constructions) — not a photo.",
+  },
+  "client-avanish-realty": {
+    src: "/images/clients/avanish-realty.png",
+    alt: "Avanish Group",
+    placeholder: false,
+    source: "Supplied by the owner",
+    brief: "Client logo (Avanish Group) — not a photo.",
+  },
+  "client-balaji-constructions": {
+    src: "/images/clients/balaji-constructions.png",
+    alt: "Balaji Constructions",
+    placeholder: false,
+    source: "Supplied by the owner",
+    brief: "Client logo (Balaji Constructions) — not a photo.",
+  },
+  "client-banka-infracon": {
+    src: "/images/clients/banka-infracon.png",
+    alt: "Banka Infracon",
+    placeholder: false,
+    source: "Supplied by the owner; supplied as white lettering for dark backgrounds; the white set in charcoal, the red kept",
+    brief: "Client logo (Banka Infracon) — not a photo.",
+  },
+  "client-chandiwala": {
+    src: "/images/clients/chandiwala.png",
+    alt: "Chandiwala",
+    placeholder: false,
+    source: "Supplied by the owner; white background removed",
+    brief: "Client logo (Chandiwala) — not a photo.",
+  },
+  "client-dipti": {
+    src: "/images/clients/dipti.png",
+    alt: "Dipti Group",
+    placeholder: false,
+    source: "Supplied by the owner; upscaled ×4 (Real-ESRGAN) for sharpness, colours kept",
+    brief: "Client logo (Dipti Group) — not a photo.",
+  },
+  "client-duville-estate": {
+    src: "/images/clients/duville-estate.png",
+    alt: "Duville Estates",
+    placeholder: false,
+    source: "Supplied by the owner; upscaled ×4 (Real-ESRGAN) for sharpness, colours kept; supplied as white lettering for dark backgrounds, the white set in charcoal, the red kept",
+    brief: "Client logo (Duville Estates) — not a photo.",
+  },
+  "client-ibc-developers": {
+    src: "/images/clients/ibc-developers.png",
+    alt: "India Builders Corp.",
+    placeholder: false,
+    source: "Supplied by the owner; white background removed",
+    brief: "Client logo (India Builders Corp.) — not a photo.",
+  },
+  "client-jk-associates": {
+    src: "/images/clients/jk-associates.png",
+    alt: "JK Associates",
+    placeholder: false,
+    source: "Supplied by the owner; the white tagline set in charcoal so it shows on light backgrounds",
+    brief: "Client logo (JK Associates) — not a photo.",
+  },
+  "client-mi-construction": {
+    src: "/images/clients/mi-construction.png",
+    alt: "M.I. Construction & Consulting",
+    placeholder: false,
+    source: "Supplied by the owner; upscaled ×4 (Real-ESRGAN) for sharpness, colours kept",
+    brief: "Client logo (M.I. Construction & Consulting) — not a photo.",
+  },
+  "client-morya": {
+    src: "/images/clients/morya.png",
+    alt: "Morya Constructions",
+    placeholder: false,
+    source: "Supplied by the owner",
+    brief: "Client logo (Morya Constructions) — not a photo.",
+  },
+  "client-p-and-p-construction": {
+    src: "/images/clients/p-and-p-construction.png",
+    alt: "PP Construction",
+    placeholder: false,
+    source: "Supplied by the owner; upscaled ×4 (Real-ESRGAN) for sharpness, colours kept",
+    brief: "Client logo (PP Construction) — not a photo.",
+  },
+  "client-poonam-highrise": {
+    src: "/images/clients/poonam-highrise.png",
+    alt: "Poonam Group",
+    placeholder: false,
+    source: "Supplied by the owner; upscaled ×4 (Real-ESRGAN) for sharpness, colours kept",
+    brief: "Client logo (Poonam Group) — not a photo.",
+  },
+  "client-rashi-developers": {
+    src: "/images/clients/rashi-developers.png",
+    alt: "Rashi Developers",
+    placeholder: false,
+    source: "Supplied by the owner; white background removed",
+    brief: "Client logo (Rashi Developers) — not a photo.",
+  },
+  "client-runwal": {
+    src: "/images/clients/runwal.svg",
+    alt: "Runwal Realty",
+    placeholder: false,
+    source: "Supplied by the owner",
+    brief: "Client logo (Runwal Realty) — not a photo.",
+  },
+  // The emblem includes a reading figure: client logos are the one exception to the no-people rule (AGENTS.md).
+  "client-svkm": {
+    src: "/images/clients/svkm.png",
+    alt: "Shri Vile Parle Kelavani Mandal",
+    placeholder: false,
+    source: "Supplied by the owner",
+    brief: "Client logo (SVKM) — not a photo.",
+  },
+  "client-suvidha-developers": {
+    src: "/images/clients/suvidha-developers.png",
+    alt: "Suvidha Lifespaces",
+    placeholder: false,
+    source: "Supplied by the owner",
+    brief: "Client logo (Suvidha Lifespaces) — not a photo.",
+  },
+  "client-tropicana": {
+    src: "/images/clients/tropicana.png",
+    alt: "Tropicana",
+    placeholder: false,
+    source: "Supplied by the owner; supplied as white lettering for dark backgrounds, the white set in charcoal",
+    brief: "Client logo (Tropicana) — not a photo.",
+  },
+  "client-yashpal-builders": {
+    src: "/images/clients/yashpal-builders.png",
+    alt: "Yashpal Group",
+    placeholder: false,
+    source: "Supplied by the owner",
+    brief: "Client logo (Yashpal Group) — not a photo.",
   },
 
   // Home hero slides: a 16:9 photo for wide screens and a 4:5 crop for phones held upright.
@@ -291,7 +534,7 @@ export const images: Record<string, ImageAsset> = Object.fromEntries(
   Object.entries(entries).map(([id, entry]) => {
     const m = meta[entry.src];
     if (!m) throw new Error(`Missing image metadata for ${entry.src}. Run npm run images:meta.`);
-    return [id, { id, ...entry, width: m.width, height: m.height, blurDataURL: m.blurDataURL, highlights: m.highlights }];
+    return [id, { id, ...entry, width: m.width, height: m.height, blurDataURL: m.blurDataURL, highlights: m.highlights, ink: m.ink }];
   }),
 );
 

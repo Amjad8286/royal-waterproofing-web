@@ -16,7 +16,7 @@ These affect what visitors see today. Confirm each, then delete its entry from `
 - [ ] `urgentLeak` — Confirm you take urgent leak calls ("Leaking right now? Call us" in the header)
 - [ ] `legalName` — Registered business name, used in the footer and legal pages (and GSTIN, if you want it shown)
 - [ ] `NEXT_PUBLIC_SITE_URL` — Production domain (royalwaterproofingco.com, matching the email domain?)
-- [ ] `clients` — Confirm the client list on the home page (src/content/clients.ts): permission to show each name and the Adani, Tata and Godrej & Boyce logos; whether "Ashraf Shaikh" and "Dipti" are businesses or individuals (individuals need consent); whether "Tropicana" and "Delhi Tropicana" are different clients; the exact name for "Pooja Poonam Tata"; and the spelling "Shree Gopal Housing Plantations" (supplied as "Ghree")
+- [ ] `clients` — Confirm the client list on the home page (src/content/clients.ts): permission to show each name and logo (37 logos: 16 official files from Commons or the companies' websites, 21 supplied by the owner); that the supplied files match the listed names — Alpine Vistara (logo reads Alpinepeak Developers), IBC Developers (India Builders Corp.), Poonam Highrise (Poonam Group), Runwal (Runwal Realty); that "Tropicana" is the Tropicana juice brand (the supplied logo is its wordmark); whether "Tropicana" / "Delhi Tropicana" and "IBC Knowledge Park" / "IBC Developers" are different clients; and the spelling "Shree Gopal Housing Plantations" (supplied as "Ghree")
 
 ## Launch tasks
 
@@ -186,37 +186,23 @@ File: `src/content/images.ts + public/images/`
 - [ ] fire-water-tank-before → /images/illustrations/fire-water-tank-before.webp
 - [ ] fire-water-tank-after → /images/illustrations/fire-water-tank-after.webp
 
-## Client logos (optional, 27)
+## Client logos (optional, 13)
 
-The home page's client wall shows 3 logos; these clients are shown by name. To show one's logo, get the file from the client with permission to use it, save it in `public/images/clients/`, add it to `src/content/images.ts`, set `logo` in `src/content/clients.ts` and run `npm run images:meta`.
+The home page's client wall shows 37 logos; these clients are shown by name. To show one's logo, get the file from the client with permission to use it, save it in `public/images/clients/`, add it to `src/content/images.ts`, set `logo` in `src/content/clients.ts` and run `npm run images:meta`.
 
-- [ ] Piramal
-- [ ] Runwal
-- [ ] Kolte Patil
-- [ ] Chandigarh University
+- [ ] Miles Infra LLP
+- [ ] Narvane School
+- [ ] Nakta Investment Pvt. Ltd.
+- [ ] Jatin Agro Land and Farm Pvt. Ltd.
 - [ ] IBC Knowledge Park Pvt. Ltd.
-- [ ] Chandak
-- [ ] Duville Estate
 - [ ] Adrika Developers
-- [ ] Ashraf Shaikh
-- [ ] Avanish Realty
-- [ ] Chandiwala
+- [ ] Goregaon Electrical
 - [ ] Delhi Tropicana
-- [ ] Dipti
-- [ ] Goregaon Electric
-- [ ] IBC Developers
-- [ ] Jiten Agroland & Farm
-- [ ] JK Associates
 - [ ] KBS Properties
 - [ ] KVD
-- [ ] MI Construction
-- [ ] Morya
 - [ ] Nadkar
-- [ ] P & P Construction
-- [ ] Pooja Poonam Tata
+- [ ] Puja Poonam Builders
 - [ ] Shree Gopal Housing Plantations
-- [ ] Suvidha Developers
-- [ ] Tropicana
 
 ## Statements to keep accurate
 

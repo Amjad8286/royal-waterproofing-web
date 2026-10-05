@@ -19,7 +19,7 @@ Read `docs/website-build-prompt.md` (the brief) and `docs/PLAN.md` (decisions an
 - After changing content, run `npm test` (catches broken slug/image references) and `npm run docs:content` (keeps the checklist and shot list in sync).
 
 ## Images
-- No people anywhere: no workers, staff, customers, hands or human figures — not in photos, illustrations or icons. Use buildings, surfaces, materials, tools and Mumbai architecture. Check stock photos at full size for small figures on balconies, rooftops and streets before adding them.
+- No people anywhere: no workers, staff, customers, hands or human figures — not in photos, illustrations or icons. Use buildings, surfaces, materials, tools and Mumbai architecture. Check stock photos at full size for small figures on balconies, rooftops and streets before adding them. The one exception is a client's own logo, shown unaltered on the client wall (e.g. SVKM's emblem).
 - Client logos are third-party trademarks: add one only for a confirmed client, from an official source, with permission, recorded in `source`. Clients without a reliable logo are shown by name — never guess a logo for an ambiguous name.
 - Every image goes through `SiteImage` and the manifest in `src/content/images.ts`. Stock photos carry a `credit`, are downloaded and cropped by `scripts/stock-photos.mjs`, and are never presented as the company's own work. `e2e/images.spec.ts` fails if a page shows an image that isn't in the manifest.
 - Run `npm run images:meta` after adding files to `public/images/` (it also records each photo's highlight brightness, which the home hero uses to even out its photos).

@@ -294,7 +294,7 @@ export const pendingFacts: { field: string; note: string; blocksLaunch: boolean 
   { field: "NEXT_PUBLIC_SITE_URL", note: "Production domain (royalwaterproofingco.com, matching the email domain?)", blocksLaunch: true },
   {
     field: "clients",
-    note: "Confirm the client list on the home page (src/content/clients.ts): permission to show each name and the Adani, Tata and Godrej & Boyce logos; whether \"Ashraf Shaikh\" and \"Dipti\" are businesses or individuals (individuals need consent); whether \"Tropicana\" and \"Delhi Tropicana\" are different clients; the exact name for \"Pooja Poonam Tata\"; and the spelling \"Shree Gopal Housing Plantations\" (supplied as \"Ghree\")",
+    note: "Confirm the client list on the home page (src/content/clients.ts): permission to show each name and logo (37 logos: 16 official files from Commons or the companies' websites, 21 supplied by the owner); that the supplied files match the listed names — Alpine Vistara (logo reads Alpinepeak Developers), IBC Developers (India Builders Corp.), Poonam Highrise (Poonam Group), Runwal (Runwal Realty); that \"Tropicana\" is the Tropicana juice brand (the supplied logo is its wordmark); whether \"Tropicana\" / \"Delhi Tropicana\" and \"IBC Knowledge Park\" / \"IBC Developers\" are different clients; and the spelling \"Shree Gopal Housing Plantations\" (supplied as \"Ghree\")",
     blocksLaunch: true,
   },
   { field: "logo", note: "Original vector logo files, if you have them (public/images/brand/ holds a trace of the supplied PNG)", blocksLaunch: false },

@@ -62,6 +62,8 @@ export interface ImageAsset {
   blurDataURL?: string;
   /** How bright the photo's light areas are (90th-percentile relative luminance, 0–1), from `npm run images:meta`. */
   highlights?: number;
+  /** Client logos: how light the artwork is (mean luma of its non-white pixels, 0–1), from `npm run images:meta`. */
+  ink?: number;
   /** True for sample illustrations that stand in for the company's own project photos. */
   placeholder: boolean;
   /** Licensed stock photo: where it came from. Replace with your own photo when you can. */

@@ -7,17 +7,244 @@
     "width": 1419,
     "height": 679
   },
+  "/images/clients/abrol.png": {
+    "width": 1067,
+    "height": 249,
+    "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4WAoAAAAQAAAACwAAAgAAQUxQSCUAAAAADTQbUAADAQEBAgAAMJRdTzEzGCooJy4rOj5xDCMlFR8aHiEXAFZQOCBEAAAAEAIAnQEqDAADAAOAWiWQAnRH/4GOil3xAAD+Tseq1DVL45bpgxaa5r8S4lENQJKFVAn7K2sBr3eWcNo5+EtBM8uSAAA=",
+    "highlights": 0.364,
+    "ink": 0.4
+  },
   "/images/clients/adani.svg": {
     "width": 279,
-    "height": 100
+    "height": 100,
+    "ink": 0.33
+  },
+  "/images/clients/alpine-vistara.png": {
+    "width": 432,
+    "height": 220,
+    "blurDataURL": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4WAoAAAAQAAAACwAABQAAQUxQSEgAAAABcBrbtuqqOp+ZWTEzuO8oiuPSQiIiABAYHiEIgCBI6L9/CpIgAAJKvIoAEHnlWNXVNsZ5+9j2+fV+n7f7905IgWQqju57LAlWUDggUgAAABACAJ0BKgwABgADgFolsAJ0AQN72uScbAAA/uRh2eaKLYh8+7D4rmgNvcPz6nldn2/eyr7knmmWzolXXVcBjgY1Sp1WAMji8NeqffP6EGeYAAA=",
+    "highlights": 0.146,
+    "ink": 0.33
+  },
+  "/images/clients/arcons.png": {
+    "width": 777,
+    "height": 320,
+    "blurDataURL": "data:image/webp;base64,UklGRroAAABXRUJQVlA4WAoAAAAQAAAACwAABAAAQUxQSD0AAAAAABcGAAACDhYfLk0DAH4rFy9ENysuNFcrKpNcNE9TQUBNUEQ5YDYvHgAEIx4pGSgiEgAIFAABHRsmFSMhAFZQOCBWAAAA0AEAnQEqDAAFAAOAWiWwAnQBFPeblwAA/vec+oaEdbT/9xA+d2KvMx6IvGudIWwcyfBqwkiYG6rxWrLMfp/x/88GfmX+Ur51RVR7r3sX1/+Tf9jgAAA=",
+    "highlights": 0.1,
+    "ink": 0.07
+  },
+  "/images/clients/avanish-realty.png": {
+    "width": 460,
+    "height": 320,
+    "blurDataURL": "data:image/webp;base64,UklGRtwAAABXRUJQVlA4WAoAAAAQAAAACwAABwAAQUxQSGEAAAAAAAAAAgBsaAACAAAAAAAAAwCflwADAAAAAAECADWNmy8AAgAAAQEOGX5weHoXDAEBABMwNhMOCRU3NxAAQXJHRl5MW1picVhhV2dqVmdZWm5UeExUDiEaV0lGO0VOEiMKAFZQOCBUAAAA0AEAnQEqDAAIAAOAWiWwAnQA3BWTOIAA/Z0xxzxW+Y63bCdUNbez4fcg56Eh6HueX2gHzH2JKwrzqjmjguJyh+0PWCC1Pht/++xjZ/rd2Qj7cAAA",
+    "highlights": 0.504,
+    "ink": 0.59
+  },
+  "/images/clients/balaji-constructions.png": {
+    "width": 820,
+    "height": 295,
+    "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4WAoAAAAQAAAACwAAAwAAQUxQSDEAAAAAAQECAAucYAAAAQEBAAAAAgBvlAcAAQAAIxYVFxUULR8OFhscGiMyO0RISVVIQzUaAFZQOCA4AAAA8AEAnQEqDAAEAAOAWiWMAsOxH92pPygAAP7s39EUWbMXhWSVypr8vlztTyh0QS9P+pq0HoE6AAA=",
+    "highlights": 0.069,
+    "ink": 0.32
+  },
+  "/images/clients/banka-infracon.png": {
+    "width": 1176,
+    "height": 320,
+    "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4WAoAAAAQAAAACwAAAgAAQUxQSCUAAAAAgX8ycVRqZmdbEoopfHxmPmVYdmhPQ0dRESETCBYREQoTGgofAFZQOCAsAAAAkAEAnQEqDAADAAOAWiUAAFOtTYhgAP7vIAF8uZnd1zAC0F0AM+qc11cdwAA=",
+    "highlights": 0.056,
+    "ink": 0.24
+  },
+  "/images/clients/capacite.svg": {
+    "width": 489,
+    "height": 100,
+    "ink": 0.33
+  },
+  "/images/clients/chandak.svg": {
+    "width": 280,
+    "height": 100,
+    "ink": 0.13
+  },
+  "/images/clients/chandigarh-university.png": {
+    "width": 225,
+    "height": 82,
+    "blurDataURL": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4WAoAAAAQAAAACwAAAwAAQUxQSDEAAAAA0f2gbKqqqamdmqGv4f+sZJKUkI+FlYpY4f+sg7urn6WnjHMP1P+iMkRBP0NFKhwHAFZQOCA+AAAA8AEAnQEqDAAEAAOAWiWoAnR/ABgazb3AAP6qhR4Q37/Xzxk7k2sM6AohmU95z36odUJXd04z/BxugugAAAA=",
+    "highlights": 0.224,
+    "ink": 0.28
+  },
+  "/images/clients/chandiwala.png": {
+    "width": 443,
+    "height": 320,
+    "blurDataURL": "data:image/webp;base64,UklGRuwAAABXRUJQVlA4WAoAAAAQAAAACwAACAAAQUxQSG0AAAAAAAAAAAc/LQABAAAAAAABAEFLGhkBAQAAAAEAH2EaACYpBwAAAQAMaDkLAiRTBwABAQBKaXx7AlyDGgABACZtTJl2DolvHwcACFswaqBVPaNIAB0BTlYQtZQAXKwoABAUPDs9dFQnXGQzHyUuAFZQOCBYAAAA8AEAnQEqDAAJAAOAWiWwAnQA3ZIgQuoAAP7vWy6JuNyP3bJdUMiQHs+3XlXFC2+YJhcp/Ke8PWtymEmPqCYMhBfsh+l4ad18r9YwYLicoc28cwpA7sEAAA==",
+    "highlights": 0.146,
+    "ink": 0.31
+  },
+  "/images/clients/dipti.png": {
+    "width": 569,
+    "height": 307,
+    "blurDataURL": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4WAoAAAAQAAAACwAABQAAQUxQSEkAAAAAHSgAAgALIi8iMQsAl2YiAQAMITYeLQ4AvuTJVgEfHhIaFxoSs5hDxyUKLzQPKE0mPzVh1hQXKycXHjgVdKPLVwAhMi8pRCcAAFZQOCBCAAAA8AEAnQEqDAAGAAOAWiWwAnQBFtK6FIwAAP4AGPlTEn2Nwmrpe2Aj8UVIv+fbsMFzfp1+s99/uQkZt2sDlHQ+DfgA",
+    "highlights": 0.459,
+    "ink": 0.51
+  },
+  "/images/clients/dosti.png": {
+    "width": 392,
+    "height": 168,
+    "blurDataURL": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAACwAABAAAQUxQSD0AAAAASioob6KCSx4fRyFMSQRRz//eZD4GRgJMSCEsTK+DGDgUPwRIKS8dEyAXJSMeJiIkFhMTHBcPDhgSCxETAFZQOCA2AAAAkAEAnQEqDAAFAAOAWiWMAALHpslwAP7zTvD6Qp1UsaiXijbLObxwYbw4vceGLK2RgH76TQAA",
+    "highlights": 0.142,
+    "ink": 0.26
+  },
+  "/images/clients/duville-estate.png": {
+    "width": 409,
+    "height": 206,
+    "blurDataURL": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4WAoAAAAQAAAACwAABQAAQUxQSEkAAAAADAsAAAABAwBBQgABQjASAgcICAJRTQYQKAxCJyQwLyZVVUVMRC0YQi8mLRZLQzMrCQoDDwgEBwMGAwkHAA8gJRMUHg0eGiQAAFZQOCBEAAAA0AEAnQEqDAAGAAOAWiWIAAJaIKb+QAAA/ux/YyRnAopsZXDDo6Sr2JTXuagBunC8ItD1aTukx+xuBn7H36fgopMAAAA=",
+    "highlights": 0.091,
+    "ink": 0.25
   },
   "/images/clients/godrej-boyce.svg": {
     "width": 501,
-    "height": 100
+    "height": 100,
+    "ink": 0.44
+  },
+  "/images/clients/hinduja-hospital.svg": {
+    "width": 619,
+    "height": 100,
+    "ink": 0.24
+  },
+  "/images/clients/ibc-developers.png": {
+    "width": 1060,
+    "height": 155,
+    "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4WAoAAAAQAAAACwAAAQAAQUxQSBkAAAAAISYaGyclKBMYFBgTEScnGysiJh8bHiIYAFZQOCAuAAAA8AEAnQEqDAACAAOAWiWoAnQBFKQ/azgAAP7k4/ZhNjRsIg6/2P0K9ZfJ+J3AAA==",
+    "highlights": 0.156,
+    "ink": 0.26
+  },
+  "/images/clients/jk-associates.png": {
+    "width": 441,
+    "height": 320,
+    "blurDataURL": "data:image/webp;base64,UklGRuAAAABXRUJQVlA4WAoAAAAQAAAACwAACAAAQUxQSFoAAAABcF3btunsZ9uKbdtoLMXxO6kjReS9HiJiApBqk0gnIN0MEBnc+woqY/M9/REEAfX+24MiCICAff8sQQFhUc03e+uily/nZrvK/tycjqe9+Zi1C4EdeYUwsRlWUDggYAAAALACAJ0BKgwACQADgFolsAJ0MEN8mYmWN0AO7/8wAAD+kRdLeJLTUdR0NjOhBxClMbQ1MuOV7RUwIIB1Rh8Kr0Q/KGj906T0ZgnP0/8kehc/vCyv132E9thNymyJueOAAA==",
+    "highlights": 0.38,
+    "ink": 0.62
+  },
+  "/images/clients/kolte-patil.png": {
+    "width": 115,
+    "height": 111,
+    "blurDataURL": "data:image/webp;base64,UklGRh4BAABXRUJQVlA4WAoAAAAQAAAACwAACwAAQUxQSJEAAAAAAAABBAoXJBEGAQAAAAEAGXS0upM9AAIAAgA0tvj9/v/QQgABAACP6+bn+vr/xS0AABbA8+fu8fjk2lgAABe55+Pj3+Dc5FkAABW14NjW29rcwjgABWqRwuPh3ubbjREIbW5oZ4m2u5trbWBhdWNfQ1I4SC9UUVNlR1FSTklQTk5NTlNBFSktJB8mHyskJyoPAFZQOCBmAAAA8AEAnQEqDAAMAAOAWiWwAnQBGtUuWyIAAP7xU83evD5H/1kM+34g+WosRVZzDfi/aKgozoMIQn1PknQvhnTs6adG2EtimkHUUjvqZ5wlEWP8LhPraYDXCtmiN8c7bBlclNLoYAAA",
+    "highlights": 0.554,
+    "ink": 0.35
+  },
+  "/images/clients/mahindra.svg": {
+    "width": 719,
+    "height": 100,
+    "ink": 0.38
+  },
+  "/images/clients/mi-construction.png": {
+    "width": 1280,
+    "height": 302,
+    "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4WAoAAAAQAAAACwAAAgAAQUxQSCUAAAAAudqVFA4YIiQgHCci2/+4LC5DQkNGMCEep8SKERoeGxsdFAAAAFZQOCA8AAAA0AEAnQEqDAADAAOAWiWYAnQA9HqqsgAA/oonaGR9Pn5zng/oRe+5HxnvGe/kewplUNOhAq+9+vvgAAAA",
+    "highlights": 0.213,
+    "ink": 0.3
+  },
+  "/images/clients/mj-shah.svg": {
+    "width": 253,
+    "height": 100,
+    "ink": 0.31
+  },
+  "/images/clients/morya.png": {
+    "width": 535,
+    "height": 233,
+    "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4WAoAAAAQAAAACwAABAAAQUxQSD0AAAAABAQCDxoJEgwCNlUAPUFWQzhhZVhKYXkNRmdpRw9qYipmQDJIJScmO1crJihAIxU3MDRGPDVNPSg+P0I+AFZQOCAsAAAAcAEAnQEqDAAFAAOAWiWwAAIPuAAA/nWAx+HcofgZ1H/wNP/rlfw7kRX8AAA=",
+    "highlights": 0.212,
+    "ink": 0.37
+  },
+  "/images/clients/navneet.png": {
+    "width": 182,
+    "height": 102,
+    "blurDataURL": "data:image/webp;base64,UklGRtgAAABXRUJQVlA4WAoAAAAQAAAACwAABgAAQUxQSFUAAAAAAgAhbK3Ozq9uIAlDBIj2//7///7/9pEXh//8+/z9/fz7/P+K0f/6////////+//Xhf/8+/v8/Pv7+/+NBYb1//7///7/94sHAQAha5+zs6BtIwACAFZQOCBcAAAAEAIAnQEqDAAHAAOAWiWwAnQBFY38NvfsoAD9w+XfIrzE3xHLFybalxsbCDFIYM8vKSj2kQvaAxxoLDA3ZCHT5h/x+oThDlcX79H/qgqL6faUH5+j5Nal0CvdAAA=",
+    "highlights": 0.587,
+    "ink": 0.42
+  },
+  "/images/clients/p-and-p-construction.png": {
+    "width": 566,
+    "height": 320,
+    "blurDataURL": "data:image/webp;base64,UklGRtAAAABXRUJQVlA4WAoAAAAQAAAACwAABgAAQUxQSFUAAAAAAAABAEVpAxcEAAAAAAEASkgxgFM+AgAAAAAJKy0yQ0QyEgABAgMAJSYaATYeCAACAAAJXEk0QDYTAgAAQ181NjIsVUEZPTYnPEcyWXtla29nbotkAFZQOCBUAAAAEAIAnQEqDAAHAAOAWiWwAnQwS8FphCvbgAD+zes5JZeN6d4qswMyVZt/hrt4wwr7iiejSZD8lajcBHP/ffb2EmF08QfBgm4v3M9j764zb8RbgAAA",
+    "highlights": 0.231,
+    "ink": 0.34
+  },
+  "/images/clients/parsvnath.png": {
+    "width": 174,
+    "height": 43,
+    "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4WAoAAAAQAAAACwAAAgAAQUxQSCUAAAAAmmcrQT01PS9Ihlcqioq6h6Gcra60q7CZJy5FMi49OC9BMDU4AFZQOCA2AAAA0AEAnQEqDAADAAOAWiWwAnQBDwM58cAA/uRkEZebjBZf4wDh3ub/GbaP4ON17Pc2OFkLy6AA",
+    "highlights": 0.221,
+    "ink": 0.26
+  },
+  "/images/clients/piramal.png": {
+    "width": 306,
+    "height": 143,
+    "blurDataURL": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4WAoAAAAQAAAACwAABQAAQUxQSEkAAAAAACkIAAEBAQEBAQEBO19BBgAAAAAAAAAAhoxpDEk4ExAPEwwlYJhQMnB4d4aDf4eEBZjABQ8VIS0iIDIiAC5LAAMBAAAAAQAAAFZQOCBQAAAAUAIAnQEqDAAGAAOAWiWwAnRH/+4gAmXVidhgAP1NXddV0qZUovnaatN9g09BOIgXruKizO7ygr/LNO/1/ohM/lHB3/eHlxlpu4PLjFYAAAA=",
+    "highlights": 0.258,
+    "ink": 0.31
+  },
+  "/images/clients/poonam-highrise.png": {
+    "width": 919,
+    "height": 320,
+    "blurDataURL": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4WAoAAAAQAAAACwAAAwAAQUxQSDEAAAAAAAAAAgCOjAABAAAADggJCwRCMwYJCggNV0xaS0ZMOEFYU0xUBgcIIS0jJSsdBgoGAFZQOCBSAAAAEAIAnQEqDAAEAAOAWiWwAnS6AAL+KRIEAAD+AQjrTFcizRbTYJfo8n1Girtz0ODLE3psRBxTkAP2+fSuzKHMutNeknPDfR52py0CTEacEdAAAA==",
+    "highlights": 0.48,
+    "ink": 0.51
+  },
+  "/images/clients/rashi-developers.png": {
+    "width": 493,
+    "height": 137,
+    "blurDataURL": "data:image/webp;base64,UklGRowAAABXRUJQVlA4WAoAAAAQAAAACwAAAgAAQUxQSCUAAAAALMJeAAUCBQUCBQQCpfRzKUk2QTc3NkkzpZwLChAKCwsNCA0KAFZQOCBAAAAA0AEAnQEqDAADAAOAWiWwAnQBH237TQAA/ubYdQYIWkmPFwHFhR+wP+YPEE/F+Ww17hjDJYABJp9p9MRHLIAAAA==",
+    "highlights": 0.182,
+    "ink": 0.23
+  },
+  "/images/clients/runwal.svg": {
+    "width": 79,
+    "height": 100,
+    "ink": 0.55
+  },
+  "/images/clients/rustomjee.svg": {
+    "width": 546,
+    "height": 100,
+    "ink": 0.08
+  },
+  "/images/clients/spjimr.png": {
+    "width": 215,
+    "height": 84,
+    "blurDataURL": "data:image/webp;base64,UklGRqwAAABXRUJQVlA4WAoAAAAQAAAACwAABAAAQUxQSD0AAAAAAAo6NwADAAEBAAAAFHFtIRsaGSAjIBoNapdAWU12KzItKToraIEifYSCOD5ISEo/FS0FT0cTHxwaGhsUAFZQOCBIAAAA0AEAnQEqDAAFAAOAWiWwAnQBH/6jEAAA9q1Sz6qnzhnsBC6oHrTKq/Xc/+Q7R+aLIYfb9ClX8//k3BLtRiIKo4Q6UTKEAAAA",
+    "highlights": 0.323,
+    "ink": 0.34
+  },
+  "/images/clients/suvidha-developers.png": {
+    "width": 510,
+    "height": 240,
+    "blurDataURL": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4WAoAAAAQAAAACwAABQAAQUxQSEkAAAAAAFFPAAYICAcHAgUFfpwcglFcb3JxZ2pmnpsxS0o+Q0ZOPlFDV7dHAD09SUU7OkkzRrIfCEg2OzU6PkExeBcAAwwPCAgLCwwIAFZQOCA6AAAAsAEAnQEqDAAGAAOAWiWQAnQA8fceiADOO8DEfqMewPQuKCHB59H5JNAmD4FKx1tph5T27bUUVzAAAA==",
+    "highlights": 0.197,
+    "ink": 0.41
+  },
+  "/images/clients/svkm.png": {
+    "width": 596,
+    "height": 208,
+    "blurDataURL": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4WAoAAAAQAAAACwAAAwAAQUxQSDEAAAAAZO6cBQkICgkICg0KzP/xPy03ODE3LCAclv/VCAIFAwIEAgAAYuWaAAEAAAAAAQEBAFZQOCBaAAAAEAIAnQEqDAAEAAOAWiWwAnQwSsFHBesQgAD977VD3Asm8dvzcdsEjzDVV8u/dEogc3/yj9Gw353/zV3/Su3//NR7ZfBMOMvpq/J39QIv7XDNhuhBXjGGAAAA",
+    "highlights": 0.706,
+    "ink": 0.45
   },
   "/images/clients/tata.svg": {
     "width": 114,
-    "height": 100
+    "height": 100,
+    "ink": 0.41
+  },
+  "/images/clients/tropicana.png": {
+    "width": 1048,
+    "height": 320,
+    "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4WAoAAAAQAAAACwAAAwAAQUxQSDEAAAAAS3wqAgtBOw0FAAEAebeKpqm1qmWqll44QL1+uMC1rIHPqsmII1IXKGUSESEpKWlkAFZQOCAgAAAAMAEAnQEqDAAEAAOAWiWkAANwAP7vKppBFrqRuhPbGAA=",
+    "highlights": 0.054,
+    "ink": 0.24
+  },
+  "/images/clients/yashpal-builders.png": {
+    "width": 578,
+    "height": 204,
+    "blurDataURL": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4WAoAAAAQAAAACwAAAwAAQUxQSDEAAAAAeFB2CAAfLQAKBBIuI3k3cGpriWhyWYFeCW4xhGRuR4R9bYVGBQ0JCg0tJjIcBgsFAFZQOCA8AAAAsAEAnQEqDAAEAAOAWiUAToAbmS0EAAD+3iavmtixcFdOnPFnOF1DG38MyUBuvcaBDTS1Z3rqewDdfAAA",
+    "highlights": 0.039,
+    "ink": 0.18
   },
   "/images/illustrations/basement-villa-after.webp": {
     "width": 1600,

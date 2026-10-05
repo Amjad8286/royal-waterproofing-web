@@ -25,7 +25,7 @@ test("the home page shows every client, a few rows at a time on phones", async (
   await expect(tiles).toHaveCount(clients.length);
   for (const client of clients) {
     const mark = client.logo
-      ? section.getByRole("img", { name: client.name, exact: true })
+      ? section.getByRole("img", { name: client.name, exact: true, includeHidden: true })
       : section.getByText(client.name, { exact: true });
     await expect(mark, client.name).toHaveCount(1);
   }
