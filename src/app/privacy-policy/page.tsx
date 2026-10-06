@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { LegalPage } from "@/components/sections/legal-page";
-import { site } from "@/config/site";
+import { features, site } from "@/config/site";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -11,7 +11,7 @@ export const metadata = buildMetadata({
 
 export default function PrivacyPolicyPage() {
   return (
-    <LegalPage title="Privacy policy" path="/privacy-policy" updated="2 October 2026">
+    <LegalPage title="Privacy policy" path="/privacy-policy" updated="6 October 2026">
       <p>
         This policy explains what personal information {site.legalName} (&ldquo;we&rdquo;, &ldquo;us&rdquo;), of{" "}
         {site.contact.address.full}, collects when you use this website or contact us, how we use it, and the choices you
@@ -24,6 +24,10 @@ export default function PrivacyPolicyPage() {
           <strong>Details you give us</strong> through the enquiry form, WhatsApp, email or phone: your name, phone number,
           email, area, property type, a description of the problem, your preferred inspection time, and any photos or videos
           you send.
+        </li>
+        <li>
+          <strong>Your IP address</strong> when you send the enquiry form. It&apos;s kept with your enquiry and used only to
+          stop spam and repeated automated requests.
         </li>
         <li>
           <strong>Questions you ask the website assistant</strong>, and the page you ask them from. They&apos;re used only to
@@ -43,6 +47,13 @@ export default function PrivacyPolicyPage() {
       <h2>How we use it</h2>
       <ul>
         <li>To respond to your enquiry and arrange an inspection.</li>
+        {features.customerWhatsApp ? (
+          <li>
+            To send you WhatsApp messages about your request, at the phone number you give on the enquiry form, such as
+            confirming we&apos;ve received it and giving you its reference. Reply STOP to any of these messages and we&apos;ll
+            stop.
+          </li>
+        ) : null}
         <li>To prepare a quotation, carry out the work and support you afterwards.</li>
         <li>To keep the records we&apos;re legally required to keep, such as tax records.</li>
       </ul>
@@ -53,14 +64,29 @@ export default function PrivacyPolicyPage() {
 
       <h2>Who we share it with</h2>
       <p>
-        Only with service providers that help us run the business — for example email, hosting, messaging or
-        customer-management tools — and only for that purpose, or when the law requires it.
+        Only with service providers that help us run the business, and only for that purpose, or when the law requires it.
+        When you send the enquiry form:
       </p>
+      <ul>
+        <li>
+          Your enquiry is saved in our own enquiry system, and our team is told about it by email and on WhatsApp.
+        </li>
+        <li>Our email provider delivers those emails to our team.</li>
+        <li>
+          WhatsApp messages, to our team{features.customerWhatsApp ? " and to you" : ""}, are sent through Meta&apos;s WhatsApp Business
+          Platform, so Meta handles your name, phone number and the message under{" "}
+          <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
+            WhatsApp&apos;s privacy policy
+          </a>
+          .
+        </li>
+      </ul>
 
       <h2>How long we keep it</h2>
       <p>
-        We keep enquiry details only as long as we need them to respond and follow up. Records of work we carry out are kept
-        for as long as we need them to support that work and to meet legal and tax requirements.
+        We keep your enquiry, and a record of the messages we sent about it, until you ask us to delete them (see &ldquo;Your
+        rights&rdquo;), so we can follow up and support any work that comes from it. Records of work we carry out are kept for
+        as long as we need them to support that work and to meet legal and tax requirements.
       </p>
 
       <h2>Your rights</h2>

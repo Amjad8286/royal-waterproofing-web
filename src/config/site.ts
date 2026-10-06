@@ -31,6 +31,12 @@ export const features = {
    */
   photoUploads: false,
   /**
+   * A WhatsApp confirmation to the customer for every enquiry (sent by the
+   * lead API, src/lib/leads.ts), with no opt-in box on the form. The privacy
+   * policy describes it while this is on.
+   */
+  customerWhatsApp: true,
+  /**
    * The website assistant ("Ask us a question", bottom right). It answers
    * from the site's own content only (src/content/chat.ts), costs nothing to
    * run and needs no outside service. Set false to remove it everywhere.

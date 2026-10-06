@@ -200,6 +200,22 @@ Requested: an AI chatbot that answers questions about the company, services, are
 - Answers come back in about 30 ms without a model.
 - The chat window is a separate 5.6 KB (gzipped) chunk loaded on first open, and no server code reaches the browser.
 
+## Lead API (phase 7)
+
+Requested: send enquiries to the ERP's lead API, as in `docs/API_NOTIFICATION_ARCHITECTURE.md` §5.5. Django saves each enquiry and sends the email and WhatsApp alerts; the website's part is in `src/lib/leads.ts` (the only file that calls it), the Server Action, the form and the privacy policy. Without `LEADS_API_URL` the form keeps simulating delivery, so development and e2e tests don't need Django.
+
+Where it departs from the §5.5 reference implementation:
+
+- **The visitor's IP is read in the Server Action** and passed to `submitLead()`, so `leads.ts` doesn't touch `next/headers` and is unit-tested with a mocked `fetch` alone. It must parse as an IP (`net.isIP`); without one, nothing is sent, because Django would refuse it.
+- **Service and area names are looked up on the server** from the content, not sent by the browser.
+- **Errors the visitor can't fix aren't shown as field errors.** Django's 400s on `Idempotency-Key`, `X-Client-IP` or hidden fields would have shown "Please check the highlighted fields" with nothing highlighted. They're logged and shown as the generic error with Call and WhatsApp buttons.
+- **A `rate-limited` result**, rather than `server`, so analytics can tell the two apart (`form_submit_error` → `reason`).
+- **The per-IP limit reuses the chat limiter** through a shared `createRateLimit()`, instead of a copy. It allows 5 enquiries in 10 minutes. `LEAD_TEST_HOOKS` turns it off, because the e2e tests all submit from one address.
+- **`submissionId` is replaced after a success**, so a form restored with Back can send a second, different enquiry. It falls back to `getRandomValues`, because `randomUUID` needs HTTPS or localhost.
+- **Redirects aren't followed** (`redirect: "error"`): an `http://` API URL redirected to `https://` would otherwise turn the POST into a GET.
+
+**No WhatsApp opt-in box** (owner's decision, 6 Oct 2026). The first version had an unticked "Send me updates about this request on WhatsApp" box, as §5.5 asked. The owner had it removed so the form stays short and every customer gets the confirmation. The site now sends `whatsappOptIn: true` with every enquiry, controlled by `features.customerWhatsApp`. The privacy policy now names the enquiry system, the email provider and Meta (WhatsApp) as processors; says every enquiry gets a WhatsApp confirmation and that replying STOP ends it; mentions the IP address kept with each enquiry; and says enquiries are kept until deleted on request, as the owner decided.
+
 ## Images (phase 2)
 
 - **No people anywhere.** Every photo was checked at full resolution for small figures on balconies, rooftops and streets; three candidates were dropped and the hero was cropped above a road. The illustration generator's figure drawings and the people/hands icons were removed. `e2e/images.spec.ts` fails if any page shows an image outside the reviewed manifest.
@@ -213,7 +229,7 @@ Defined in `src/types/content.ts`; data in `src/content/*`; read through async g
 
 ## Dependencies
 
-Unchanged. Runtime: `next`, `react`, `lucide-react`, `react-hook-form`, `@hookform/resolvers`, `zod` (as `zod/mini`), `clsx`, `tailwind-merge`, `server-only`. Dev: `vitest`, `@playwright/test`, `@axe-core/playwright`, `tsx`, `sharp`. The website assistant (phase 6) added none: search, fact check and the optional model client are a few hundred lines in `src/lib/chat/`.
+Unchanged. Runtime: `next`, `react`, `lucide-react`, `react-hook-form`, `@hookform/resolvers`, `zod` (as `zod/mini`), `clsx`, `tailwind-merge`, `server-only`. Dev: `vitest`, `@playwright/test`, `@axe-core/playwright`, `tsx`, `sharp`. The website assistant (phase 6) added none: search, fact check and the optional model client are a few hundred lines in `src/lib/chat/`. Nor did the lead API (phase 7), which uses `fetch`.
 
 ## Assumptions and deviations
 

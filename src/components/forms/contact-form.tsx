@@ -54,6 +54,12 @@ interface Photo {
 
 const FIELD_ORDER = ["name", "phone", "service", "area", "areaOther", "email", "preferredDate", "message"] as const;
 
+/** A random ID for one submission. `randomUUID` needs HTTPS (or localhost); `getRandomValues` doesn't. */
+function newSubmissionId() {
+  if (typeof crypto.randomUUID === "function") return crypto.randomUUID();
+  return Array.from(crypto.getRandomValues(new Uint8Array(16)), (byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
 export function ContactForm({
   variant = "compact",
   services,
@@ -71,6 +77,9 @@ export function ContactForm({
   const full = variant === "full";
 
   const startedAt = useRef<number | null>(null);
+  // Sent with every attempt and reused on retries, so a retry after a timeout
+  // can't create a second enquiry. A new one is made after a success.
+  const submissionId = useRef<string | null>(null);
   const summaryRef = useRef<HTMLDivElement>(null);
   const serverErrorRef = useRef<HTMLDivElement>(null);
   const [serverError, setServerError] = useState<string | null>(null);
@@ -171,15 +180,19 @@ export function ContactForm({
   const onValid = async (data: Lead) => {
     setServerError(null);
     setShowSummary(false);
+    submissionId.current ??= newSubmissionId();
     const result = await submitLeadAction({
       ...data,
       sourcePage: window.location.pathname,
+      formLocation: location,
       attribution: readAttribution(),
       photoCount: photos.length,
       elapsedMs: startedAt.current ? Date.now() - startedAt.current : undefined,
+      submissionId: submissionId.current,
     });
 
     if (result.ok) {
+      submissionId.current = null;
       track("form_submit_success", { form: variant, location, service: data.service });
       router.push(`/thank-you?ref=${encodeURIComponent(result.reference)}`);
       return;

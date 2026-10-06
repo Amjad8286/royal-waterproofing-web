@@ -1,6 +1,7 @@
 "use server";
 
-import { submitLead } from "@/lib/leads";
+import { headers } from "next/headers";
+import { clientIpFrom, submitLead } from "@/lib/leads";
 import { leadSchema, type LeadInput, type LeadResult } from "@/lib/validation";
 
 function fieldErrors(issues: { path: PropertyKey[]; message: string }[]) {
@@ -24,8 +25,9 @@ export async function submitLeadAction(input: LeadInput): Promise<LeadResult> {
     };
   }
   try {
-    return await submitLead(parsed.data);
-  } catch {
+    return await submitLead(parsed.data, { clientIp: clientIpFrom(await headers()) });
+  } catch (error) {
+    console.error("[leads] couldn't submit:", error instanceof Error ? error.message : error);
     return { ok: false, error: "server", message: "We couldn't send your request just now." };
   }
 }

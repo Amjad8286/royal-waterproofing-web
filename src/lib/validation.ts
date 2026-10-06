@@ -46,6 +46,9 @@ export function isValidPhone(value: string): boolean {
   return /^[2-9]\d{9}$/.test(national);
 }
 
+/** The lead API's Idempotency-Key rule: 8–64 letters, digits, `_` or `-` (a UUID fits). */
+export const SUBMISSION_ID = /^[A-Za-z0-9_-]{8,64}$/;
+
 /** YYYY-MM-DD for "yesterday" — tolerant of time zones between browser and server. */
 function earliestAllowedDate() {
   const d = new Date();
@@ -82,8 +85,11 @@ export const leadSchema = z
     contactMethod: z.optional(z.string().check(z.refine(allowed(contactMethodOptions)))),
     // Context and attribution (hidden fields)
     sourcePage: z.optional(z.string().check(z.maxLength(200))),
+    formLocation: z.optional(z.string().check(z.maxLength(80))),
     attribution: z.optional(z.record(z.string(), z.string().check(z.maxLength(200)))),
     photoCount: z.optional(z.int().check(z.minimum(0), z.maximum(5))),
+    // One ID per form, reused on retries, so a retry can never create a second enquiry.
+    submissionId: z.optional(z.string().check(z.regex(SUBMISSION_ID))),
     // Spam protection: honeypot must stay empty; time-to-submit in ms
     website: z.optional(z.string().check(z.maxLength(0))),
     elapsedMs: z.optional(z.int().check(z.minimum(0))),
@@ -101,7 +107,12 @@ export type Lead = z.output<typeof leadSchema>;
 
 export type LeadResult =
   | { ok: true; reference: string }
-  | { ok: false; error: "validation" | "server"; message: string; fieldErrors?: Record<string, string[] | undefined> };
+  | {
+      ok: false;
+      error: "validation" | "server" | "rate-limited";
+      message: string;
+      fieldErrors?: Record<string, string[] | undefined>;
+    };
 
 /** Client-side photo rules (photos aren't uploaded in the prototype). */
 export const photoRules = {

@@ -84,6 +84,23 @@ describe("leadSchema", () => {
     expect(errorsFor({ ...valid, contactMethod: "pigeon" })).toHaveProperty("contactMethod");
   });
 
+  it("keeps the form's location and the submission ID", () => {
+    const result = leadSchema.safeParse({
+      ...valid,
+      formLocation: "service-bathroom-waterproofing-cta",
+      submissionId: "0b6c43f4-6a1d-4b8e-9d0e-8a3f2f7c1e55",
+    });
+    expect(result.success && result.data).toMatchObject({
+      formLocation: "service-bathroom-waterproofing-cta",
+      submissionId: "0b6c43f4-6a1d-4b8e-9d0e-8a3f2f7c1e55",
+    });
+  });
+
+  it("rejects a submission ID the lead API wouldn't accept", () => {
+    expect(errorsFor({ ...valid, submissionId: "short" })).toHaveProperty("submissionId");
+    expect(errorsFor({ ...valid, submissionId: "has spaces in it" })).toHaveProperty("submissionId");
+  });
+
   it("fails when the honeypot field is filled", () => {
     expect(errorsFor({ ...valid, website: "https://spam.example" })).toHaveProperty("website");
   });

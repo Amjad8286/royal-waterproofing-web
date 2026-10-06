@@ -12,6 +12,7 @@ const phone = devices["Pixel 7"];
  * - a preview build with sample content shown (e2e/preview/*.spec.ts), to exercise
  *   the sections that appear once real projects, reviews and photos exist.
  * LEAD_TEST_HOOKS lets a submission named "Test Error" exercise the form's error path.
+ * LEADS_API_URL is emptied so enquiries are simulated, even when a local .env points at a lead API.
  */
 export default defineConfig({
   testDir: "./e2e",
@@ -33,14 +34,14 @@ export default defineConfig({
       command: `npx next start -p ${PORT}`,
       url: `http://localhost:${PORT}`,
       reuseExistingServer: !process.env.CI,
-      env: { LEAD_TEST_HOOKS: "true" },
+      env: { LEAD_TEST_HOOKS: "true", LEADS_API_URL: "" },
       timeout: 120_000,
     },
     {
       command: `npx next start -p ${PREVIEW_PORT}`,
       url: `http://localhost:${PREVIEW_PORT}`,
       reuseExistingServer: !process.env.CI,
-      env: { LEAD_TEST_HOOKS: "true", NEXT_DIST_DIR: ".next-preview" },
+      env: { LEAD_TEST_HOOKS: "true", LEADS_API_URL: "", NEXT_DIST_DIR: ".next-preview" },
       timeout: 120_000,
     },
   ],

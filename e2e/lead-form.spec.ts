@@ -58,6 +58,16 @@ test.describe("lead form", () => {
     await expect(page).toHaveURL(/\/contact$/);
   });
 
+  test("doesn't ask about WhatsApp updates on either form", async ({ page }) => {
+    await page.goto("/contact");
+    await expect(form(page).getByRole("checkbox")).toHaveCount(0);
+    await expect(form(page).getByText(/send me updates/i)).toHaveCount(0);
+
+    await page.goto("/services/crack-repair-sealing");
+    const ctaForm = page.locator("#cta-title").locator("xpath=ancestor::section[1]").locator("form");
+    await expect(ctaForm.getByRole("checkbox")).toHaveCount(0);
+  });
+
   test("the compact form on a service page is pre-set to that service", async ({ page }) => {
     await page.goto("/services/crack-repair-sealing");
     const ctaForm = page.locator("#cta-title").locator("xpath=ancestor::section[1]").locator("form");

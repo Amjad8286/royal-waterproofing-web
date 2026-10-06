@@ -2,7 +2,7 @@
 
 Marketing and lead-generation website for Royal Waterproofing Co., a waterproofing and leakage-repair company in Santacruz East, Mumbai. Built with Next.js 16 (App Router), React 19, TypeScript and Tailwind CSS v4.
 
-Every page is statically generated. The only server code is the Server Action behind the enquiry form, which currently simulates delivery (see [Connecting the enquiry form](#connecting-the-enquiry-form)), and the API behind the [website assistant](#website-assistant), a chat that answers questions from the site's own content at no running cost.
+Every page is statically generated. The only server code is the Server Action behind the enquiry form, which sends each enquiry to the ERP's lead API (see [Connecting the enquiry form](#connecting-the-enquiry-form)), and the API behind the [website assistant](#website-assistant), a chat that answers questions from the site's own content at no running cost.
 
 > **Only real content is shown.** The site uses the confirmed business details (phone, WhatsApp, email, office address, Mumbai, free inspection). Invented sample content — projects, reviews, gallery, stats, ratings, warranty terms, team — is hidden until you replace it with the real thing; preview it with `npm run dev:preview`. Search engines are blocked until you turn indexing on. Run `npm run check:content` to see what's left before launch.
 
@@ -46,6 +46,9 @@ First time running e2e tests: `npx playwright install chromium`.
 | `NEXT_PUBLIC_SITE_URL` | `http://localhost:3000` | Production URL, no trailing slash. Used for canonical URLs, the sitemap, Open Graph and structured data |
 | `NEXT_PUBLIC_ALLOW_INDEXING` | `false` | `true` lets search engines index the site. Turn on at launch |
 | `NEXT_PUBLIC_PREVIEW_SAMPLES` | `false` | `true` shows the invented sample content with "Sample" badges. For reviewing layouts only — never in production |
+| `LEADS_API_URL` | — | Server-only. The lead API, e.g. `https://api.example.com/api`. Empty simulates delivery (local development, e2e tests). See [Connecting the enquiry form](#connecting-the-enquiry-form) |
+| `LEADS_API_KEY` | — | Server-only. Shared secret, the same value as `LEADS_API_KEY` in the Django backend |
+| `LEADS_API_TIMEOUT_MS` | `8000` | Server-only. How long to wait for the lead API before showing the form's error state |
 | `LEAD_SUBMIT_MODE` | — | Server-only. `error` makes every form submission fail, to preview the error state |
 | `CHAT_MODEL_URL`, `CHAT_MODEL` | — | Server-only, optional. A self-hosted language model for the website assistant, e.g. `http://localhost:11434/v1` and `qwen3:4b-instruct`. See [Website assistant](#website-assistant) |
 | `CHAT_MODEL_API_KEY` | — | Server-only, optional. Bearer token, if the model server sits behind a proxy that checks one |
@@ -124,13 +127,20 @@ The photos, their order and their labels are in `src/content/hero.ts`. Each slid
 
 ## Connecting the enquiry form
 
-All forms submit through the Server Action in `src/lib/actions.ts`, which validates with the same Zod schema the browser uses (`src/lib/validation.ts`) and calls `submitLead()` in `src/lib/leads.ts`. That function is the only integration point: replace the marked block with an email (Resend, Postmark, SES), a CRM record, or a WhatsApp Business API notification. Keep API keys in server-only environment variables. **Until you do, form submissions aren't delivered anywhere** — calls and WhatsApp messages go straight to +91 97020 08187.
+All forms submit through the Server Action in `src/lib/actions.ts`, which validates with the same Zod schema the browser uses (`src/lib/validation.ts`) and calls `submitLead()` in `src/lib/leads.ts`, the only file that talks to the lead API. The API is the `leads` app in the ERP backend: it saves the enquiry, emails and WhatsApps the team, and sends the customer a WhatsApp confirmation. Its contract, templates and deployment steps are in [docs/API_NOTIFICATION_ARCHITECTURE.md](docs/API_NOTIFICATION_ARCHITECTURE.md).
+
+To go live, set `LEADS_API_URL` and `LEADS_API_KEY`. **Until then, form submissions aren't delivered anywhere** (a production server logs a warning) — calls and WhatsApp messages go straight to +91 97020 08187.
+
+The API limits enquiries per visitor IP, so it needs the real one: `src/lib/leads.ts` reads the first `X-Forwarded-For` entry. Vercel sets that header itself. Behind your own proxy, make it overwrite the header (nginx: `proxy_set_header X-Forwarded-For $remote_addr;`), or visitors could send their own.
 
 Already handled:
 
 - Phone validation for Indian mobiles and landlines (with or without +91 / 0), and international numbers with a country code
-- Spam protection with a honeypot field and a minimum time-to-submit check
-- First-touch UTM attribution and the source page, sent with each lead
+- Spam protection with a honeypot field and a minimum time-to-submit check, plus a per-visitor limit (5 enquiries in 10 minutes) in front of the API's own
+- No duplicates from retries: each form sends one `submissionId` with every attempt, so a retry after a timeout returns the first enquiry's reference
+- A WhatsApp confirmation to every customer, with no opt-in box on the form. `features.customerWhatsApp` in `src/config/site.ts` switches it off, along with the privacy-policy text about it
+- Errors from the API shown under the matching fields; an unreachable API, a timeout or a configuration problem shows the error box with Call and WhatsApp buttons, and is logged with a `[leads]` prefix (never with the visitor's details)
+- First-touch UTM attribution, the source page and the form's location, sent with each lead
 - Analytics events: `cta_click`, `call_click`, `whatsapp_click`, `form_start`, `form_submit_success`, `form_submit_error` go to `window.dataLayer` if Google Tag Manager is added
 
 The form asks people to send photos on WhatsApp, because uploads would need storage. To accept uploads on the form, add direct-to-storage uploads (S3, R2 or similar) and set `features.photoUploads` to `true` in `src/config/site.ts`.
