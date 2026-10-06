@@ -44,8 +44,8 @@ The brief said never to present invented data as real, and the phase 2 request s
 | `/projects` | static | Sectors ("who we work for"), process; real case studies appear above them once added |
 | `/projects/[slug]` | SSG, real projects only | Case study |
 | `/gallery`, `/reviews` | static | 404 until real photos / reviews exist |
-| `/service-areas` | static | Ten areas grouped by zone, schematic Mumbai map |
-| `/service-areas/[area]` | SSG ×10 | Unique copy per area |
+| `/service-areas` | static | Twenty areas grouped by zone, schematic Mumbai map |
+| `/service-areas/[area]` | SSG ×20 | Unique copy per area; each covers a cluster of neighbouring localities named in its intro |
 | `/about`, `/faq`, `/contact` | static | |
 | `/thank-you` | static, noindex | |
 | `/privacy-policy`, `/terms` | static | Written for India (DPDP Act 2023, Mumbai courts); legal review still needed |
@@ -237,7 +237,7 @@ Unchanged. Runtime: `next`, `react`, `lucide-react`, `react-hook-form`, `@hookfo
 2. **Sample content hidden, not badged** (phase 2) — see "Honest content". Showing it unbadged would mislead customers; badged, it looks unfinished.
 3. **Projects page shows sectors until real case studies exist.** The request asked for project and gallery patterns, but publishing invented jobs as real isn't acceptable. The page describes the kinds of buildings the company works on and how each job runs (capabilities, not claims); the case-study explorer, slider and gallery are built and tested, and switch on with real content.
 4. **WhatsApp assumed to be on the mobile number** (+91 97020 08187) — a launch blocker to confirm.
-5. **Service areas** — ten areas across Mumbai, Thane and Navi Mumbai, inferred from the Santacruz East office. A launch blocker to confirm.
+5. **Service areas** — twenty areas across Mumbai, Thane and Navi Mumbai, inferred from the Santacruz East office. A launch blocker to confirm. Seventeen Delhi areas were added on request as samples (`placeholder: true`): hidden on the live site until the owner confirms Delhi work, since the market is Mumbai-only and the map, `areaServed` and region copy would need Delhi versions.
 6. **Urgent-leak call line kept** ("Leaking right now? Call us") — it only invites a call, but it's listed as a launch blocker to confirm.
 7. **Photo uploads switched off** on the form (`features.photoUploads`) until the backend stores files; the form points people to WhatsApp instead, which does reach the business.
 8. **Phone validation** accepts Indian mobiles and landlines (with or without +91 / 0) and international numbers with a country code (NRI owners of Mumbai flats).

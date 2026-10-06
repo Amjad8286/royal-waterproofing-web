@@ -4,14 +4,14 @@
 
 The live site shows only confirmed content. Invented sample content (projects, reviews, stats, warranty terms and so on) is hidden, and appears with "Sample" badges only in preview mode (`NEXT_PUBLIC_PREVIEW_SAMPLES=true`).
 
-`npm run check:content` fails while launch blockers remain. **7 launch blockers and 105 hidden sample items remain.**
+`npm run check:content` fails while launch blockers remain. **7 launch blockers and 122 hidden sample items remain.**
 
 ## Launch blockers
 
 These affect what visitors see today. Confirm each, then delete its entry from `pendingFacts` in `src/config/site.ts`.
 
 - [ ] `contact.whatsappNumber` — Confirm WhatsApp is on +91 97020 08187
-- [ ] `areas` — Confirm the areas you serve (src/content/areas.ts lists ten across Mumbai, Thane and Navi Mumbai)
+- [ ] `areas` — Confirm the areas you serve (src/content/areas.ts): the Mumbai, Thane and Navi Mumbai list, and whether the Delhi areas (sample, hidden) should go live — Delhi would also need its own map, structured data and region copy
 - [ ] `differentiators / processSteps` — Confirm every 'how we work' statement is accurate
 - [ ] `urgentLeak` — Confirm you take urgent leak calls ("Leaking right now? Call us" in the header)
 - [ ] `legalName` — Registered business name, used in the footer and legal pages (and GSTIN, if you want it shown)
@@ -142,11 +142,27 @@ File: `src/content/reviews.ts`
 - [ ] Plant engineer, bandra-khar: "Planned around our shutdown, well documented, and the tank h…"
 - [ ] Homeowner, andheri: "Careful crack repair on our house. The patched areas showed …"
 
-### Service areas (hidden) (0)
+### Service areas (hidden) (17)
 
 File: `src/content/areas.ts`
 
-All done.
+- [ ] Greater Kailash & Kalkaji (greater-kailash-kalkaji)
+- [ ] Lajpat Nagar & Defence Colony (lajpat-nagar-defence-colony)
+- [ ] Hauz Khas & Green Park (hauz-khas-green-park)
+- [ ] Saket & Malviya Nagar (saket-malviya-nagar)
+- [ ] Vasant Kunj & Vasant Vihar (vasant-kunj-vasant-vihar)
+- [ ] Nehru Place & Okhla (nehru-place-okhla)
+- [ ] Connaught Place (connaught-place)
+- [ ] Karol Bagh & Rajendra Place (karol-bagh-rajendra-place)
+- [ ] Chandni Chowk & Old Delhi (chandni-chowk-old-delhi)
+- [ ] Rajouri Garden & Punjabi Bagh (rajouri-garden-punjabi-bagh)
+- [ ] Janakpuri & Vikaspuri (janakpuri-vikaspuri)
+- [ ] Dwarka (dwarka)
+- [ ] Naraina & Mayapuri (naraina-mayapuri)
+- [ ] Rohini & Pitampura (rohini-pitampura)
+- [ ] Shalimar Bagh & Ashok Vihar (shalimar-bagh-ashok-vihar)
+- [ ] Mayur Vihar & Patparganj (mayur-vihar-patparganj)
+- [ ] Preet Vihar & Laxmi Nagar (preet-vihar-laxmi-nagar)
 
 ### Team (hidden) (4)
 

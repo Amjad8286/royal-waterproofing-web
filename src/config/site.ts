@@ -293,7 +293,11 @@ export const certifications: Certification[] = [
  */
 export const pendingFacts: { field: string; note: string; blocksLaunch: boolean }[] = [
   { field: "contact.whatsappNumber", note: "Confirm WhatsApp is on +91 97020 08187", blocksLaunch: true },
-  { field: "areas", note: "Confirm the areas you serve (src/content/areas.ts lists ten across Mumbai, Thane and Navi Mumbai)", blocksLaunch: true },
+  {
+    field: "areas",
+    note: "Confirm the areas you serve (src/content/areas.ts): the Mumbai, Thane and Navi Mumbai list, and whether the Delhi areas (sample, hidden) should go live — Delhi would also need its own map, structured data and region copy",
+    blocksLaunch: true,
+  },
   { field: "differentiators / processSteps", note: "Confirm every 'how we work' statement is accurate", blocksLaunch: true },
   { field: "urgentLeak", note: "Confirm you take urgent leak calls (\"Leaking right now? Call us\" in the header)", blocksLaunch: true },
   { field: "legalName", note: "Registered business name, used in the footer and legal pages (and GSTIN, if you want it shown)", blocksLaunch: true },
