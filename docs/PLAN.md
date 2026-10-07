@@ -8,6 +8,8 @@ Companion to `docs/website-build-prompt.md` (the original brief). This file reco
 - **Phase 4 (October 2026)** rebuilt the colour system from the logo so the site and logo read as one brand, and redesigned the app icon (see "Brand colour system and app icon").
 - **Phase 5 (October 2026)** added the home page client wall (see "Our clients").
 - **Phase 6 (October 2026)** added the website assistant, a chat that answers from the site's own content at no running cost (see "Website assistant").
+- **Phase 7 (October 2026)** connected the enquiry form to the ERP's lead API (see "Lead API").
+- **Phase 8 (October 2026)** was an SEO and Core Web Vitals pass over the indexable build (see "SEO pass").
 
 ## Business facts
 
@@ -215,6 +217,37 @@ Where it departs from the §5.5 reference implementation:
 - **Redirects aren't followed** (`redirect: "error"`): an `http://` API URL redirected to `https://` would otherwise turn the POST into a GET.
 
 **No WhatsApp opt-in box** (owner's decision, 6 Oct 2026). The first version had an unticked "Send me updates about this request on WhatsApp" box, as §5.5 asked. The owner had it removed so the form stays short and every customer gets the confirmation. The site now sends `whatsappOptIn: true` with every enquiry, controlled by `features.customerWhatsApp`. The privacy policy now names the enquiry system, the email provider and Meta (WhatsApp) as processors; says every enquiry gets a WhatsApp confirmation and that replying STOP ends it; mentions the IP address kept with each enquiry; and says enquiries are kept until deleted on request, as the owner decided.
+
+## SEO pass (phase 8)
+
+An audit of the indexable build (`NEXT_PUBLIC_ALLOW_INDEXING=true` with the production URL) found the foundations in place: every page static, one `h1` each, canonical URLs, clean URL variants (trailing slashes redirect, query strings canonicalise), no broken internal links and no orphan pages. It also found these problems, now fixed:
+
+- **Duplicate title.** The home page and `/services` were both "Waterproofing Services in Mumbai". The home page is now "Waterproofing Company in Mumbai", the About page's own wording.
+- **Wrong cities in structured data.** `areaServed` put Thane and Navi Mumbai inside Mumbai: the code compared the zone with "Thane", but the zone is "Thane & Navi Mumbai". It now lists the three cities (`site.market.cities`) as `City`, then each area page under its published name, without guessing a city for it (Dahisar & Mira Road spans two). `Service` lists the cities, since every service is offered in every area.
+- **The per-service share cards were never used.** `buildMetadata()` hard-coded the site-wide image, which beats an `opengraph-image` in the page's own folder. A page's `openGraph` also replaces the image it would inherit, so leaving `images` out leaves most pages with none. `buildMetadata()` now takes a page's own card as `image` (service pages, with the service name as alt text) and uses the site-wide card otherwise.
+- **Long area descriptions.** All twenty were 163–218 characters. `describeList()` keeps as many of the area's common problems as fit in 165, then the call to action if there's room.
+- **Sitemap dates.** Every `lastmod` was the build time, which search engines learn to ignore. Each page's `lastmod` is now the day its content last changed.
+  - `scripts/page-dates.mjs` fingerprints the live build: title, description, and the text, image alt text, links and structured data in `<main>`. The site URL is removed first, so local and production builds match.
+  - It records the fingerprints and dates in `src/content/generated/page-dates.json`, which `sitemap.ts` reads. `npm run sitemap:dates` updates the file, and the e2e suite fails while it's out of date.
+  - The first dates are 7 October 2026, the day this started, except for the legal pages, which use the "Last updated" dates they show.
+  - `changefreq` and `priority` are gone: Google and Bing ignore both.
+- **Image entries** in the sitemap list the company's own photos (no stock, samples or client logos) for the pages that show them. There are none yet, so they appear with the first real project photos.
+- **robots.txt.** `/thank-you` was disallowed, so crawlers couldn't see its `noindex`. It's crawlable now, `/api/` is excluded, and the obsolete `Host:` line is gone.
+- **Contradictory robots tags on 404s.** The layout's `index, follow` sat next to the `noindex` Next.js adds; `not-found.tsx` now sets `noindex` itself.
+- **The floating WhatsApp button had no accessible name** (icon only). axe missed it because the button is `inert` until the hero scrolls away, so a navigation test checks it.
+- **Indexing guard hardened.** Preview mode is never indexable, even with `NEXT_PUBLIC_ALLOW_INDEXING=true`, and `next.config.ts` stops an indexable build unless `NEXT_PUBLIC_SITE_URL` is an `https://` domain; otherwise canonicals and the sitemap would point at localhost.
+
+Also added: `WebSite` structured data on the home page (the site name in search results); a 512px PNG as the business logo instead of the SVG app icon; AVIF images, which Next.js encodes to match WebP's visual quality and which came out 22–60% smaller for the photos measured (the phone hero photo: 83 → 48 KB); a FAQ `h1` that names waterproofing; an areas `h1` that names all three cities; and "Contact Us" at the start of the contact page title.
+
+Decisions:
+
+- **Area titles over 60 characters are kept** (10 of 20, up to 69). Every title carries the brand, which the e2e suite checks, and the area name comes first, so only the brand gets cut off in results.
+- **No further robots.txt rules.** Router prefetch URLs (`?_rsc=`) return the page with its canonical tag, and so do query-string links such as `/contact?service=…`. Blocking either would stop crawlers seeing that canonical. AI crawlers are allowed, since being cited by AI assistants can bring enquiries; blocking them is the owner's call.
+- **The e2e builds pin indexing off**, whatever `.env` says, because the suite tests the indexing guard.
+- **`FAQPage` markup is kept.** Since 2023 Google shows FAQ rich results only for well-known government and health sites, but the markup is valid and describes the page.
+- **Not changed:** the zod validation core is the largest script (35 KB gzipped), but the Server Action shares it by design. Next.js's own polyfills, which Lighthouse flags as legacy JavaScript, can't be removed. Hidden static pages (`/gallery`, `/reviews`) render their 404 in the browser from an empty initial body; that only affects visitors without JavaScript, on URLs nothing links to.
+
+Verification: `npm run lint` and `npm run typecheck` clean; 122 unit tests pass; `npm run test:e2e`: 157 passed, 33 skipped by design. Page fingerprints matched across two builds and between a production build and a localhost build with indexing off, and editing one area's intro flagged only that area's page. A crawl of the indexable build found 39 pages with no duplicate titles or descriptions, every description at most 165 characters, a share image on every page, no JSON-LD errors and 73 internal links, all returning 200. Lighthouse (mobile) with DevTools throttling: LCP 1.6–1.9 s (home 2.1 → 1.9 s, home page weight 1,046 → 756 KiB), TBT about 0, CLS about 0. With simulated throttling, Performance went from 84 to 90 on the home page, 86 to 93 on About and 89 to 93 on Services, with the rest unchanged within noise. Accessibility, Best Practices and SEO score 100 on every page. Simulated LCP on localhost (3.1–3.7 s) overstates the real figure: every script finishes before first paint locally, so the simulation counts them as LCP dependencies.
 
 ## Images (phase 2)
 

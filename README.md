@@ -30,6 +30,7 @@ npm run dev:preview           # the same, with sample content shown (badged)
 | `npm run test:e2e` | Builds the live site and a preview copy, then runs Playwright: every page (status, one `h1`, title, canonical, JSON-LD, axe WCAG 2.2 AA, no console errors, no horizontal scrolling down to 320px), links, a site-wide image scan, real contact details everywhere, navigation, the lead form, and the sample-content features, at desktop and phone sizes |
 | `npm run check:content` | Launch gate: lists launch blockers (exits with an error until they're cleared) and the content still to add |
 | `npm run docs:content` | Regenerates `docs/CONTENT_CHECKLIST.md` and `docs/PHOTO_SHOT_LIST.md` from the data |
+| `npm run sitemap:dates` | Builds the live site and updates the sitemap's `lastmod` dates for pages whose content changed (`src/content/generated/page-dates.json`). Run after changing content, before deploying; the e2e suite fails while a date is out of date |
 | `npm run images:stock` | Downloads and crops the licensed stock photos into `public/images/photos/` |
 | `npm run images:clients` | Downloads the client logos in use from Wikimedia Commons into `public/images/clients/`, trimmed to their artwork |
 | `npm run images:meta` | Records size, blur placeholder and highlight brightness for every file in `public/images` (run after adding photos) |
@@ -44,7 +45,7 @@ First time running e2e tests: `npx playwright install chromium`.
 | Variable | Default | Purpose |
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | `http://localhost:3000` | Production URL, no trailing slash. Used for canonical URLs, the sitemap, Open Graph and structured data |
-| `NEXT_PUBLIC_ALLOW_INDEXING` | `false` | `true` lets search engines index the site. Turn on at launch |
+| `NEXT_PUBLIC_ALLOW_INDEXING` | `false` | `true` lets search engines index the site. Turn on at launch; the build then needs `NEXT_PUBLIC_SITE_URL` set to the production `https://` domain. Ignored in preview mode |
 | `NEXT_PUBLIC_PREVIEW_SAMPLES` | `false` | `true` shows the invented sample content with "Sample" badges. For reviewing layouts only — never in production |
 | `LEADS_API_URL` | — | Server-only. The lead API, e.g. `https://api.example.com/api`. Empty simulates delivery (local development, e2e tests). See [Connecting the enquiry form](#connecting-the-enquiry-form) |
 | `LEADS_API_KEY` | — | Server-only. Shared secret, the same value as `LEADS_API_KEY` in the Django backend |
@@ -215,11 +216,15 @@ As checked in October 2026 (these terms change):
 
 ## SEO
 
-- Metadata on every route: title template, description, canonical URL, Open Graph and Twitter tags, plus generated share images (one per service) showing the phone number and location.
-- Titles and headings name Mumbai; area pages cover ten areas across Mumbai, Thane and Navi Mumbai.
-- Structured data: `HomeAndConstructionBusiness` sitewide (real address, phone, email, areas served), `Service` on service pages, `FAQPage` on the FAQ, service and area pages, and `BreadcrumbList` on inner pages.
+- Metadata on every route through `buildMetadata()` (`src/lib/seo.ts`): a unique title (the e2e suite checks), a description of at most 165 characters, canonical URL, Open Graph and Twitter tags, plus generated share images (one per service, one for everything else) showing the phone number and location.
+- Titles and headings name Mumbai; area pages cover the areas across Mumbai, Thane and Navi Mumbai.
+- Structured data (`src/lib/schema.ts`): `HomeAndConstructionBusiness` sitewide (real address, phone, email, the cities and areas served), `WebSite` on the home page (the site name in search results), `Service` on service pages, `FAQPage` on the FAQ, service and area pages, and `BreadcrumbList` on inner pages. Only confirmed facts: hours, map pin, ratings and social profiles appear once they're set in `src/config/site.ts`.
 - `sitemap.xml` and `robots.txt` are generated from content (pages with no real content are left out).
-- **Indexing guard:** unless `NEXT_PUBLIC_ALLOW_INDEXING=true`, every page is `noindex` and `robots.txt` blocks all crawlers.
+  - Each sitemap entry's `lastmod` is the day that page's content last changed. `scripts/page-dates.mjs` fingerprints what each page shows (title, description, and the text, image descriptions, links and structured data in `<main>`), so a date moves only when the page really changed.
+  - There's no `changefreq` or `priority`, which Google and Bing ignore.
+  - The company's own photos are listed for image search once there are some; stock photos and samples never are.
+  - `robots.txt` allows everything except `/api/`. `/thank-you` is `noindex` and stays crawlable so search engines can see that.
+- **Indexing guard:** unless `NEXT_PUBLIC_ALLOW_INDEXING=true`, every page is `noindex` and `robots.txt` blocks all crawlers. Preview mode is never indexable, and an indexable build stops unless `NEXT_PUBLIC_SITE_URL` is the production `https://` domain.
 
 ## Deploying
 
@@ -228,10 +233,15 @@ The site needs a Node.js runtime because of the Server Action and the assistant'
 - **Vercel:** import the repository and set the environment variables above for Production. Nothing else to configure.
 - **Self-hosted:** `npm ci && npm run build && npm start` behind a reverse proxy (Node 20.9+). `sharp` is installed for image optimisation.
 
-At launch: clear the launch blockers (`npm run check:content` passes), connect the form, then set `NEXT_PUBLIC_SITE_URL` and `NEXT_PUBLIC_ALLOW_INDEXING=true`, and redeploy.
+At launch: clear the launch blockers (`npm run check:content` passes), connect the form, then set `NEXT_PUBLIC_SITE_URL` and `NEXT_PUBLIC_ALLOW_INDEXING=true` for production only, and redeploy. Then:
+
+1. Redirect the other host names to the one in `NEXT_PUBLIC_SITE_URL` (`www` or the bare domain, `http` to `https`, and the host's own address such as `*.vercel.app`) in your host's domain settings.
+2. Add the site to [Google Search Console](https://search.google.com/search-console) and Bing Webmaster Tools, and submit `https://<your-domain>/sitemap.xml`.
+3. Check the home page and a service page in Google's [Rich Results Test](https://search.google.com/test/rich-results), and the home page in [PageSpeed Insights](https://pagespeed.web.dev/).
+4. Keep the business name, address and phone number on your Google Business Profile exactly as they are in `src/config/site.ts`.
 
 ## Quality notes
 
 - **Accessibility:** WCAG 2.2 AA, checked by axe on every page in the e2e suite. Covers keyboard support, visible focus, a skip link, native `<dialog>` and `<details>`, and reduced-motion support.
-- **Performance:** pages are static, client JavaScript is minimal, the stylesheet is cached across pages, fonts are self-hosted, photos are responsive WebP with blur placeholders, the map loads only on click, the chat window's code loads only when someone opens it, and only the first hero photo loads with the page (prioritised; the slideshow fetches each next photo after the page has loaded).
+- **Performance:** pages are static, client JavaScript is minimal, the stylesheet is cached across pages, fonts are self-hosted, photos are responsive AVIF or WebP (whichever the browser supports) with blur placeholders, the map loads only on click, the chat window's code loads only when someone opens it, and only the first hero photo loads with the page (prioritised; the slideshow fetches each next photo after the page has loaded).
 - **Browser support:** current Chrome, Edge, Firefox and Safari 16.4+.

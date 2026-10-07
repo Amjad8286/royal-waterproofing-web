@@ -10,9 +10,38 @@ import type { Area, FAQ, Service } from "@/types/content";
 
 const abs = (path: string) => `${site.url}${path}`;
 export const BUSINESS_ID = `${site.url}/#business`;
+const WEBSITE_ID = `${site.url}/#website`;
 
 const compact = <T extends Record<string, unknown>>(obj: T) =>
   Object.fromEntries(Object.entries(obj).filter(([, v]) => v !== undefined && v !== "" && v !== null));
+
+const cities: readonly string[] = site.market.cities;
+const cityPlaces = () => cities.map((name) => ({ "@type": "City", name }));
+
+/**
+ * The cities covered, then each area page by the name it's published under.
+ * Areas aren't tagged with a city: some pages span two (Dahisar & Mira Road).
+ */
+function areaServed(areas: Area[]) {
+  return [
+    ...cityPlaces(),
+    ...areas.filter((area) => !cities.includes(area.name)).map((area) => ({ "@type": "Place", name: area.name })),
+  ];
+}
+
+/** Site name for search results. Belongs on the home page only. */
+export function websiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": WEBSITE_ID,
+    name: site.name,
+    alternateName: site.shortName,
+    url: abs("/"),
+    inLanguage: site.language,
+    publisher: { "@id": BUSINESS_ID },
+  };
+}
 
 export function businessJsonLd(areas: Area[], services: Service[]) {
   const { address, geo, phone, email } = site.contact;
@@ -25,7 +54,8 @@ export function businessJsonLd(areas: Area[], services: Service[]) {
     description: site.description,
     slogan: site.tagline,
     url: site.url,
-    logo: abs("/icon.svg"),
+    // The app icon as a 512px PNG: raster logos are the safest choice for search engines.
+    logo: abs("/icons/icon-512.png"),
     image: abs("/opengraph-image"),
     telephone: phone.href.replace("tel:", ""),
     email,
@@ -49,10 +79,7 @@ export function businessJsonLd(areas: Area[], services: Service[]) {
           })),
         }
       : {}),
-    areaServed: [
-      { "@type": "City", name: site.market.primaryCity },
-      ...areas.map((area) => ({ "@type": "Place", name: `${area.name}, ${area.zone === "Thane" || area.zone === "Navi Mumbai" ? area.zone : site.market.primaryCity}` })),
-    ],
+    areaServed: areaServed(areas),
     ...(site.social.length ? { sameAs: site.social.map((s) => s.href) } : {}),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -65,7 +92,8 @@ export function businessJsonLd(areas: Area[], services: Service[]) {
   };
 }
 
-export function serviceJsonLd(service: Service, areas: Area[]) {
+/** Every service is offered in every area, so a service serves all the cities covered. */
+export function serviceJsonLd(service: Service) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -75,7 +103,7 @@ export function serviceJsonLd(service: Service, areas: Area[]) {
     description: service.seo.description,
     url: abs(`/services/${service.slug}`),
     provider: { "@id": BUSINESS_ID },
-    areaServed: areas.map((area) => ({ "@type": "Place", name: area.name })),
+    areaServed: cityPlaces(),
   };
 }
 

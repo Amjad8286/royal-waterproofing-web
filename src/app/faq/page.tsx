@@ -27,7 +27,7 @@ export default async function FaqPage() {
         variant="page"
         breadcrumbs={[{ name: "FAQ", href: "/faq" }]}
         eyebrow="FAQ"
-        title="Frequently asked questions"
+        title="Frequently asked questions about waterproofing"
         intro="Straight answers about cost, inspections, timing, housing societies and looking after the work. Can't find yours? Ask us on WhatsApp."
       />
       <JsonLd data={faqJsonLd(faqs)} />

@@ -91,4 +91,14 @@ test.describe("desktop navigation", () => {
     await page.goto("/faq");
     await expect(page.getByRole("banner").getByRole("link", { name: /\+91 97020 08187/ }).first()).toBeVisible();
   });
+
+  test("the floating WhatsApp button appears after the hero, with an accessible name", async ({ page }) => {
+    // axe can't check it on load: it's inert until the hero's own buttons scroll away.
+    await page.goto("/services/terrace-roof-waterproofing");
+    const button = page.locator('a[data-track-location="floating"]');
+    await expect(button).toHaveAttribute("inert", "");
+    await page.evaluate(() => window.scrollTo(0, 1600));
+    await expect(button).not.toHaveAttribute("inert", "");
+    await expect(button).toHaveAccessibleName("WhatsApp Us");
+  });
 });

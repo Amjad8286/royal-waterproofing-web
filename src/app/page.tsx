@@ -15,6 +15,7 @@ import { ServicesGrid } from "@/components/sections/services-grid";
 import { StatsSection } from "@/components/sections/stats-section";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
+import { JsonLd } from "@/components/seo/json-ld";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { cta, processSteps, site } from "@/config/site";
@@ -32,12 +33,14 @@ import {
   getServices,
   getStats,
 } from "@/lib/content";
+import { websiteJsonLd } from "@/lib/schema";
 import { buildMetadata, withCity } from "@/lib/seo";
 import { whatsappMessage, whatsappUrl } from "@/lib/whatsapp";
 
 // The root layout's title template doesn't apply to the root page, so the home title is absolute.
+// "Company" rather than "Services", so the home page doesn't compete with /services for the same title.
 export const metadata = buildMetadata({
-  title: `${withCity("Waterproofing Services")} | ${site.name}`,
+  title: `${withCity("Waterproofing Company")} | ${site.name}`,
   absoluteTitle: true,
   description: `Terrace, bathroom, external wall and basement waterproofing in ${site.market.primaryCity}. We find the cause of the leak first, then give you a written quotation. ${cta.primary}.`,
   path: "/",
@@ -60,6 +63,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd data={websiteJsonLd()} />
       <HeroSection variant="home" formOptions={formOptions} slides={heroSlides} />
 
       <Section labelledBy="problems-title">

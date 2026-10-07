@@ -11,15 +11,28 @@ export function withCity(topic: string) {
   return `${candidate}${SUFFIX}`.length <= MAX_TITLE ? candidate : topic;
 }
 
+const fits = (description: string) => description.length <= MAX_DESCRIPTION;
+
 /** Ends a description with the primary call to action when it fits. */
 export function withCta(description: string) {
   const candidate = `${description} ${cta.primary}.`;
-  return candidate.length <= MAX_DESCRIPTION ? candidate : description;
+  return fits(candidate) ? candidate : description;
 }
 
 /**
- * Indexing guard: nothing is indexable unless NEXT_PUBLIC_ALLOW_INDEXING=true,
- * so preview deployments with placeholder content never reach search results.
+ * "Lead: a, b, c." with as many items as fit in a description (the first
+ * always stays), then the call to action if there's still room. Commas, not
+ * "and", because the items often contain "and" themselves.
+ */
+export function describeList(lead: string, items: string[]) {
+  const sentences = items.map((_, i) => `${lead}: ${items.slice(0, items.length - i).join(", ")}.`);
+  return withCta(sentences.find(fits) ?? sentences.at(-1) ?? `${lead}.`);
+}
+
+/**
+ * Indexing guard: nothing is indexable unless NEXT_PUBLIC_ALLOW_INDEXING=true
+ * (and never in preview mode), so deployments with placeholder content never
+ * reach search results.
  */
 export function robotsFor(noindex = false): Metadata["robots"] {
   const index = flags.allowIndexing && !noindex;
@@ -35,14 +48,21 @@ interface PageMetaInput {
   noindex?: boolean;
   /** Use the title as-is, without the " | Royal Waterproofing Co." suffix. */
   absoluteTitle?: boolean;
+  /** The page's own share card (an opengraph-image route). Defaults to the site-wide card. */
+  image?: { url: string; alt: string };
 }
 
+const siteImage = { url: "/opengraph-image", alt: `${site.name} — ${site.tagline}` };
 
 /**
  * Complete metadata for a page. Metadata objects merge shallowly between
  * segments, so nested objects (openGraph, robots) are always built in full here.
+ *
+ * That includes the share image: a page's `openGraph` replaces the one it would
+ * inherit, file-based image and all, and wins over an opengraph-image file in
+ * its own folder. So pages with their own card pass it as `image`.
  */
-export function buildMetadata({ title, description, path, noindex = false, absoluteTitle = false }: PageMetaInput): Metadata {
+export function buildMetadata({ title, description, path, noindex = false, absoluteTitle = false, image = siteImage }: PageMetaInput): Metadata {
   const fullTitle = absoluteTitle ? title : `${title}${SUFFIX}`;
   return {
     title: absoluteTitle ? { absolute: title } : title,
@@ -55,7 +75,7 @@ export function buildMetadata({ title, description, path, noindex = false, absol
       title: fullTitle,
       description,
       url: path,
-      images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name} — ${site.tagline}` }],
+      images: [{ ...image, width: 1200, height: 630 }],
     },
     twitter: { card: "summary_large_image", title: fullTitle, description },
     robots: robotsFor(noindex),

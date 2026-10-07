@@ -18,7 +18,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { getArea, getAreas, getFormOptions, getProjects, getReviews, getServices, serviceName } from "@/lib/content";
 import { projectsForArea, resolveSlugs, reviewsForArea } from "@/lib/relations";
 import { faqJsonLd } from "@/lib/schema";
-import { buildMetadata, withCta } from "@/lib/seo";
+import { buildMetadata, describeList } from "@/lib/seo";
 import { whatsappMessage } from "@/lib/whatsapp";
 
 export const dynamicParams = false;
@@ -34,8 +34,9 @@ export async function generateMetadata({ params }: PageProps<"/service-areas/[ar
   if (!area) return {};
   return buildMetadata({
     title: `Waterproofing in ${area.name}`,
-    description: withCta(
-      `Waterproofing and leakage repair in ${area.name}: ${area.commonProblems.map((p) => p.problem.toLowerCase()).join(", ")}.`,
+    description: describeList(
+      `Waterproofing and leakage repair in ${area.name}`,
+      area.commonProblems.map(({ problem }) => problem.charAt(0).toLowerCase() + problem.slice(1)),
     ),
     path: `/service-areas/${area.slug}`,
   });

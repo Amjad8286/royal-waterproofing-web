@@ -16,7 +16,7 @@ import { buildMetadata } from "@/lib/seo";
 import { whatsappMessage, whatsappUrl } from "@/lib/whatsapp";
 
 export const metadata = buildMetadata({
-  title: cta.contactHeading.replace(/^./, (c) => c.toUpperCase()),
+  title: `Contact Us — ${cta.contactHeading.replace(/^./, (c) => c.toUpperCase())}`,
   description: `Call ${site.contact.phone.display}, WhatsApp or send the form. We call you back, inspect, find the cause and give you a written quotation, with no obligation.`,
   path: "/contact",
 });

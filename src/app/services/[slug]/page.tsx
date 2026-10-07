@@ -44,6 +44,7 @@ export async function generateMetadata({ params }: PageProps<"/services/[slug]">
     title: withCity(service.seo.title),
     description: withCta(service.seo.description),
     path: `/services/${service.slug}`,
+    image: { url: `/services/${service.slug}/opengraph-image`, alt: `${service.name}${inCity} — ${site.name}` },
   });
 }
 
@@ -124,7 +125,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         whatsappText={waText}
         location={location}
       />
-      <JsonLd data={[serviceJsonLd(service, serviceAreas), faqJsonLd(service.faqs)]} />
+      <JsonLd data={[serviceJsonLd(service), faqJsonLd(service.faqs)]} />
 
       <div className="bg-white py-16 sm:py-20 lg:py-24">
         <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-16 xl:grid-cols-[minmax(0,1fr)_22rem]">

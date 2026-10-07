@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
+import { cta } from "@/config/site";
 import { trackAttrs } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { whatsappUrl } from "@/lib/whatsapp";
@@ -35,6 +36,7 @@ export function WhatsAppButton({ lookups, besideChat = false }: { lookups: NavLo
       {...trackAttrs("whatsapp_click", "floating")}
     >
       <WhatsAppIcon className="size-6" />
+      <span className="sr-only">{cta.whatsapp}</span>
     </a>
   );
 }

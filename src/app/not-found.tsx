@@ -6,9 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { cta, site } from "@/config/site";
 import { getServices } from "@/lib/content";
+import { robotsFor } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Page not found",
+  // Replaces the layout's robots tags, which would contradict the noindex Next.js adds to 404s.
+  robots: robotsFor(true),
 };
 
 export default async function NotFound() {

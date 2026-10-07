@@ -16,7 +16,7 @@ Read `docs/website-build-prompt.md` (the brief) and `docs/PLAN.md` (decisions an
 - Business facts live only in `src/config/site.ts`; content lives in `src/content/*`. Components never hard-code business details, prices or claims.
 - Real contact details: +91 97020 08187, info@royalwaterproofingco.com, S-9, Adarsh Apartment, 7th Rd, Sen Nagar, Santacruz East, Mumbai 400055. Market: Mumbai, Thane and Navi Mumbai (Indian English, "flat", "society", "monsoon").
 - Anything invented is flagged `placeholder: true` (or kept `null` / listed in `pendingFacts`). The content getters hide it on the live site; it only appears, badged, in preview mode (`NEXT_PUBLIC_PREVIEW_SAMPLES=true`). Sections and pages without real content render nothing (or 404) rather than look empty. Never present sample data as real, and never invent ratings, reviews, stats, warranties, certifications or years in business. No `Review`/`AggregateRating` structured data.
-- After changing content, run `npm test` (catches broken slug/image references) and `npm run docs:content` (keeps the checklist and shot list in sync).
+- After changing content, run `npm test` (catches broken slug/image references), `npm run docs:content` (keeps the checklist and shot list in sync) and `npm run sitemap:dates` (moves the sitemap's `lastmod` for pages whose content changed).
 
 ## Images
 - No people anywhere: no workers, staff, customers, hands or human figures — not in photos, illustrations or icons. Use buildings, surfaces, materials, tools and Mumbai architecture. Check stock photos at full size for small figures on balconies, rooftops and streets before adding them. The one exception is a client's own logo, shown unaltered on the client wall (e.g. SVKM's emblem).
@@ -31,6 +31,12 @@ Read `docs/website-build-prompt.md` (the brief) and `docs/PLAN.md` (decisions an
 - Pages read content through the async getters in `src/lib/content.ts`.
 - Next.js 16: `params`/`searchParams` are Promises; images use `preload`/`loading`/`fetchPriority`, not `priority`; error boundaries receive `retry`, not `reset`. Filters read the URL with `useSearchParams` inside `<Suspense>` so pages stay static.
 - Forms: one Zod (`zod/mini`) schema in `src/lib/validation.ts` is shared by React Hook Form and the Server Action (Indian phone numbers, or international with a country code). Lead delivery is isolated in `src/lib/leads.ts`.
+
+## SEO
+- Page metadata goes through `buildMetadata()` in `src/lib/seo.ts`. Titles are unique (the e2e suite checks) and descriptions fit in 165 characters. A page's `openGraph` replaces any share image it would inherit, so a page with its own `opengraph-image` passes it as `image`.
+- Structured data goes through the builders in `src/lib/schema.ts` and states only confirmed facts. Never assign an area to a city the content doesn't name.
+- Sitemap `lastmod` dates come from `src/content/generated/page-dates.json`, updated by `npm run sitemap:dates`; never use the build time. The sitemap lists no `changefreq` or `priority`, and image entries only for the company's own photos.
+- Leave the indexing guard alone: nothing is indexable unless `NEXT_PUBLIC_ALLOW_INDEXING=true`, preview mode never is, and `next.config.ts` stops an indexable build without the production `NEXT_PUBLIC_SITE_URL`.
 
 ## Website assistant (chat)
 - It answers only from the site's content: `src/lib/chat/knowledge.ts` derives its answers from `src/content/*` and `src/config/site.ts`, and `src/content/chat.ts` holds its wording, suggestions and extra answers. Never put an unconfirmed fact there; mark it `placeholder: true`. The assistant ignores placeholder content even in preview mode, because an answer can't carry a "Sample" badge.

@@ -1,31 +1,64 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/config/site";
-import { getAreas, getAvailability, getProjects, getServices } from "@/lib/content";
+import pageDates from "@/content/generated/page-dates.json";
+import { getImage } from "@/content/images";
+import { getAreas, getAvailability, getGallery, getHeroSlides, getProjects, getServices } from "@/lib/content";
 
-/** Built from content, so new services, projects and areas are included automatically. */
+/** When each page's content last changed, kept by `npm run sitemap:dates` (scripts/page-dates.mjs). */
+const dates: Record<string, { lastModified: string } | undefined> = pageDates;
+
+const url = (path: string) => `${site.url}${path}`;
+
+/** The company's own photos: no sample illustrations, stock photos or third-party artwork such as client logos. */
+function ownPhotos(ids: (string | undefined)[]) {
+  const photos = ids
+    .filter((id): id is string => id !== undefined)
+    .map(getImage)
+    .filter((image) => !image.placeholder && !image.credit && !image.source);
+  return [...new Set(photos.map((image) => url(image.src)))];
+}
+
+/** A sitemap entry: the page's lastmod when it's on record, and its own photos for image search. */
+function entry(path: string, photoIds: (string | undefined)[] = []): MetadataRoute.Sitemap[number] {
+  const lastModified = dates[path]?.lastModified;
+  const images = ownPhotos(photoIds);
+  return { url: url(path), ...(lastModified ? { lastModified } : {}), ...(images.length ? { images } : {}) };
+}
+
+/**
+ * Every indexable page, built from content, so new services, projects and areas
+ * are included automatically and pages without real content are left out.
+ *
+ * - lastmod is the day a page's content last changed, never the build time:
+ *   search engines ignore dates that change on every deploy.
+ * - No changefreq or priority, which Google and Bing both ignore.
+ * - Image entries list the company's own photos; stock photos and samples
+ *   don't belong in image search under this site.
+ */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [services, projects, areas, available] = await Promise.all([getServices(), getProjects(), getAreas(), getAvailability()]);
-  const lastModified = new Date();
-  const url = (path: string) => `${site.url}${path}`;
-
-  const pages: { path: string; priority: number; changeFrequency: "weekly" | "monthly" | "yearly" }[] = [
-    { path: "/", priority: 1, changeFrequency: "weekly" },
-    { path: "/services", priority: 0.9, changeFrequency: "monthly" },
-    { path: "/contact", priority: 0.9, changeFrequency: "yearly" },
-    { path: "/projects", priority: 0.8, changeFrequency: "weekly" },
-    { path: "/service-areas", priority: 0.8, changeFrequency: "monthly" },
-    ...(available.reviews ? [{ path: "/reviews", priority: 0.7, changeFrequency: "weekly" as const }] : []),
-    ...(available.gallery ? [{ path: "/gallery", priority: 0.6, changeFrequency: "weekly" as const }] : []),
-    { path: "/about", priority: 0.6, changeFrequency: "yearly" },
-    { path: "/faq", priority: 0.6, changeFrequency: "monthly" },
-    { path: "/privacy-policy", priority: 0.2, changeFrequency: "yearly" },
-    { path: "/terms", priority: 0.2, changeFrequency: "yearly" },
-  ];
+  const [services, projects, areas, gallery, heroSlides, available] = await Promise.all([
+    getServices(),
+    getProjects(),
+    getAreas(),
+    getGallery(),
+    getHeroSlides(),
+    getAvailability(),
+  ]);
 
   return [
-    ...pages.map((page) => ({ url: url(page.path), lastModified, changeFrequency: page.changeFrequency, priority: page.priority })),
-    ...services.map((s) => ({ url: url(`/services/${s.slug}`), lastModified, changeFrequency: "monthly" as const, priority: 0.9 })),
-    ...areas.map((a) => ({ url: url(`/service-areas/${a.slug}`), lastModified, changeFrequency: "monthly" as const, priority: 0.7 })),
-    ...projects.map((p) => ({ url: url(`/projects/${p.slug}`), lastModified, changeFrequency: "yearly" as const, priority: 0.5 })),
+    entry("/", heroSlides.map((slide) => slide.image)),
+    entry("/services"),
+    entry("/contact"),
+    entry("/projects"),
+    entry("/service-areas"),
+    ...(available.reviews ? [entry("/reviews")] : []),
+    ...(available.gallery ? [entry("/gallery", gallery.flatMap((item) => [item.image, item.before, item.after]))] : []),
+    entry("/about"),
+    entry("/faq"),
+    entry("/privacy-policy"),
+    entry("/terms"),
+    ...services.map((service) => entry(`/services/${service.slug}`, [service.image])),
+    ...areas.map((area) => entry(`/service-areas/${area.slug}`)),
+    ...projects.map((project) => entry(`/projects/${project.slug}`, [project.cover, project.before, project.after, ...project.gallery])),
   ];
 }

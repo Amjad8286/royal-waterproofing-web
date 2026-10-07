@@ -19,8 +19,11 @@ export const flags = {
    * confirmed content.
    */
   previewSamples: process.env.NEXT_PUBLIC_PREVIEW_SAMPLES === "true",
-  /** Search engines may index the site only when explicitly enabled. */
-  allowIndexing: process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true",
+  /**
+   * Search engines may index the site only when explicitly enabled, and never
+   * in preview mode, where the invented sample content is on the pages.
+   */
+  allowIndexing: process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true" && process.env.NEXT_PUBLIC_PREVIEW_SAMPLES !== "true",
 };
 
 export const features = {
@@ -77,6 +80,8 @@ export const site = {
   market: {
     country: "India",
     primaryCity: "Mumbai",
+    /** The cities covered, for structured data. The same cities as `serviceRegion`. */
+    cities: ["Mumbai", "Thane", "Navi Mumbai"],
     /** The wider area covered, for copy such as "across Mumbai, Thane and Navi Mumbai". */
     serviceRegion: "Mumbai, Thane and Navi Mumbai",
     areaUnit: "sq ft",

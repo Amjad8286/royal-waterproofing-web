@@ -30,7 +30,7 @@ export default async function ServiceAreasPage() {
         variant="page"
         breadcrumbs={[{ name: "Service areas", href: "/service-areas" }]}
         eyebrow="Service areas"
-        title={`Waterproofing across ${site.market.primaryCity}`}
+        title={`Waterproofing across ${site.market.serviceRegion}`}
         intro={`From our office in ${site.contact.address.locality} we cover ${site.market.serviceRegion}. Pick your area to see the problems we come across most often there.`}
       />
 
